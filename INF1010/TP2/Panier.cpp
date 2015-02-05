@@ -60,9 +60,10 @@ Panier Panier::operator+ (Panier autrePanier){
 		listeArticles_.push_back(autrePanier.listeArticles_[i]);
 	}
 	return *this;
-
 }
+
 Panier Panier::operator- (Article article){
+	
 }
 
 
@@ -81,14 +82,19 @@ void Panier::operator-= (Article article){
 /*
 * void operator<< (Panier panier) = affiche contenu et la somme totale
 */
-void Panier::operator<< (Panier panier){
+ostream& operator << (ostream& os, const Panier& panier){
+	for(unsigned i = 0; i < panier.listeArticles_.size(); i++)
+		os << panier.listeArticles_.at(i);
+	os << panier.getTotal();
+	return os;
 }
 
 	/*
 	* size_t getTaille() = retourne la taille du vecteur du panier.
 	* float getTotal() = retourne le prix total du panier
 	*/
-size_t Panier::getTaille(){
-}
-float Panier::getTotal(){
+//size_t Panier::getTaille(){
+//}
+float Panier::getTotal() const{
+	return total_;
 }
