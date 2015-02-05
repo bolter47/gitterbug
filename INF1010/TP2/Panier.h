@@ -34,7 +34,8 @@ public:
 	Panier operator+ (Article article);
 	Panier operator+ (Panier autrePanier);
 	//Panier operator+ (int entier);
-	Panier operator- (Article article);
+	Panier operator- (const Article& article) const;
+	Panier operator- (const Panier& panier) const;
 	
 	//void operator+ (Panier panier) = addition d'un article à un Panier via son Id
 	
@@ -49,6 +50,7 @@ public:
 	void operator+= (Article article);
 	void operator+= (Panier autrePanier);
 	void operator-= (Article article);
+	void operator-= (Panier autrePanier);
 
 	/*
 	* size_t getTaille() = retourne la taille du vecteur du panier.

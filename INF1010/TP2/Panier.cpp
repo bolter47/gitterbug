@@ -7,8 +7,7 @@
 	* ~Panier() = destructeur
 	*/
 Panier::Panier(){
-	Panier panier;
-	panier.total_ = 0;
+	total_ = 0;
 }
 Panier::Panier(vector<Article> articles){
 	total_ = 0;
@@ -62,7 +61,18 @@ Panier Panier::operator+ (Panier autrePanier){
 	return *this;
 }
 
-Panier Panier::operator- (Article article){
+Panier Panier::operator-(const Article& article)const{
+	Panier panier = *this;
+	vector<Article*>::iterator it = panier.listeArticles_.begin();
+	for (unsigned i = 0; i < listeArticles_.size(); i++){
+		it++;
+		if (*listeArticles_[i] == article)
+			panier.listeArticles_.erase(it);
+	}
+	return panier;
+}
+
+Panier Panier::operator- (const Panier& panier) const{
 	
 }
 
@@ -73,10 +83,13 @@ Panier Panier::operator- (Article article){
 	* void operator-= (Article article) = retire un exemplaire d'un article
 	*/
 void Panier::operator+= (Article article){
+	*this = *this + article;
 }
 void Panier::operator+= (Panier autrePanier){
+	*this = *this + autrePanier;
 }
 void Panier::operator-= (Article article){
+	*this = *this - article;
 }
 
 /*
@@ -85,7 +98,8 @@ void Panier::operator-= (Article article){
 ostream& operator << (ostream& os, const Panier& panier){
 	for(unsigned i = 0; i < panier.listeArticles_.size(); i++)
 		os << panier.listeArticles_.at(i);
-	os << panier.getTotal();
+	os << panier.getTotal()
+	<< "======================================================" << endl;
 	return os;
 }
 
@@ -93,8 +107,9 @@ ostream& operator << (ostream& os, const Panier& panier){
 	* size_t getTaille() = retourne la taille du vecteur du panier.
 	* float getTotal() = retourne le prix total du panier
 	*/
-//size_t Panier::getTaille(){
-//}
+size_t Panier::getTaille() const{
+	return listeArticles_.size();
+}
 float Panier::getTotal() const{
 	return total_;
 }
