@@ -24,15 +24,16 @@ public:
 	/*
 	* Panier& operator= (Panier panier) = ecrase le contenu d'un panier
 	*/
-	Panier& operator= (Panier panier);
+	Panier& operator= (const Panier& panier);
 
 	/*
 	* Panier operator+ (Article article) = ajoute un article + met a jour le total d'articles
 	* Panier operator+ (Panier autrePanier) = fusione deux paniers
 	* Panier operator- (Article article) = retire un exemplaire d'un article
 	*/
-	Panier operator+ (Article article);
-	Panier operator+ (Panier autrePanier);
+	Panier operator+ (Article& article) const;
+	Panier operator+ (const Panier& autrePanier) const;
+	friend Panier operator+ (Article& article, const Panier autrePanier); 
 	//Panier operator+ (int entier);
 	Panier operator- (const Article& article) const;
 	Panier operator- (const Panier& panier) const;
@@ -48,9 +49,9 @@ public:
 	* void operator-= (Article article) = retire un exemplaire d'un article
 	*/
 	void operator+= (Article article);
-	void operator+= (Panier autrePanier);
+	void operator+= (const Panier& autrePanier);
 	void operator-= (Article article);
-	void operator-= (Panier autrePanier);
+	void operator-= (const Panier& autrePanier);
 
 	/*
 	* size_t getTaille() = retourne la taille du vecteur du panier.
