@@ -73,7 +73,10 @@ Panier Panier::operator-(const Article& article)const{
 }
 
 Panier Panier::operator- (const Panier& panier) const{
-	
+	Panier self(*this);
+	for (unsigned i=0; i < panier.listeArticles_.size(); i++)
+		self = self - *panier.listeArticles_[i];
+		return self;
 }
 
 
