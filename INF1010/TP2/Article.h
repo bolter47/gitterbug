@@ -1,3 +1,11 @@
+/**
+* Le header de la classe Article qui sera stocké dans des paniers
+* L'article possède un id, un nom et un prix
+* \file   Article.h
+* \author Gendreau et Courbariaux
+* \date   6 février 2015
+*/
+
 #ifndef ARTICLE_H
 #define ARTICLE_H
 
@@ -9,10 +17,10 @@ class Article
 public:
 
 	/* ***CONSTRUCT DESTRUCT***
-	*Article() 		: Constr par defaut
+	*Article() 				: Constr par defaut
 	*Article(id, nom, prix) : Constr a 3 params
-	*Article(id) 		: Constr article avec id seulement
-	*~Article() 		: Destructeur
+	*Article(id) 			: Constr article avec id seulement
+	*~Article() 			: Destructeur
 	*/
 	Article();
 

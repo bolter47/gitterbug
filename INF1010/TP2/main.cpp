@@ -1,3 +1,10 @@
+/**
+* Le code source de l'éxécutable principal
+* \file   main.cpp
+* \author Gendreau et Courbariaux
+* \date   6 février 2015
+*/
+
 #include <iostream>
 #include <vector>
 #include "Panier.h"
