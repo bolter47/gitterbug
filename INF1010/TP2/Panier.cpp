@@ -27,9 +27,9 @@ Panier::Panier(const Panier& autrePanier){
 	*this = autrePanier;
 }
 Panier::~Panier(){
-	////////////////////////////////	delete() 
+	////////////////////////////////	delete() - ne peut pas delete car les Articles* appartiennent au main
 	//for (unsigned i = 0; i < this -> getTaille(); i++){
-	//	delete this -> listeArticles_[i];
+	//	delete (this -> listeArticles_[i]);
 	//}
 }
 
@@ -120,7 +120,6 @@ void Panier::operator-= (const Panier& autrePanier){
 */
 ostream& operator << (ostream& os, const Panier& panier){
 	for(unsigned i = 0; i < panier.listeArticles_.size(); i++){
-		cout << "acces a un membre de vect a index" << i << endl;
 		os << *panier.listeArticles_.at(i);
 	}
 	os << "TOTAL : " << panier.getTotal() << endl
