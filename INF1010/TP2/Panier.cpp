@@ -36,7 +36,7 @@ Panier::Panier(const Panier& autrePanier){
 Panier::~Panier(){
 	////////////////////////////////	delete() - ne peut pas delete car les Articles* appartiennent au main
 	//for (unsigned i = 0; i < this -> getTaille(); i++){
-	//	delete (this -> listeArticles_[i]);
+	//	delete listeArticles_[i];
 	//}
 }
 
