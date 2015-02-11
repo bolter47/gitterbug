@@ -1,14 +1,13 @@
 #include "Professeur.h"
 
-Professeur::Professeur(string nom, string prenom){
-	Employe(nom, prenom);
+Professeur::Professeur(string nom, string prenom):Employe(nom, prenom){
 }
 
-unsigned Professeur::getNiveauAcces(){
+unsigned Professeur::getNiveauAcces() const{
 	return accesProfesseur_ + Employe::getNiveauAcces();
 }
 
-string Professeur::getClasseEmploye(){
+string Professeur::getClasseEmploye() const{
 	return typeid(this).name();
 }
 

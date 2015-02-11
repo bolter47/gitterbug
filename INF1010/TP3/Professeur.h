@@ -13,8 +13,8 @@ public:
 	//constructeur
 	Professeur(string nom, string prenom);
 	//accesseurs
-	unsigned getNiveauAcces();
-	string getClasseEmploye();
+	unsigned getNiveauAcces() const;
+	string getClasseEmploye() const;
 	friend ostream& operator<<(ostream& out, Professeur& professeur);
 
 private:
