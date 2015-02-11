@@ -1,6 +1,12 @@
 #ifndef H_EMPLOYE
 #define H_EMPLOYE
 
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
 class Employe{
 	public:
 	
@@ -17,11 +23,11 @@ class Employe{
 	
 	const int accesEmploye_ = 5;
 	
-	friend ostream& operator<<(ostream out, Employe employe);	
+	friend ostream& operator<<(ostream out, const Employe& employe);	
 	
 	protected:
 		string nom_;
 		string prenom_;
-}
+};
 
 #endif
