@@ -3,6 +3,7 @@
 
 #include <string>
 #include <typeinfo>
+#include "Employe.h"
 
 using namespace std;
 
