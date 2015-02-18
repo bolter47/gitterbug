@@ -3,12 +3,12 @@
 using namespace std;
 
 RegleAcces :: RegleAcces()
-:(local_(""), niveauAccesRequis_(1), periode_(PERIODE_ACCES_MATIN))
+:local_(""), niveauAccesRequis_(1), periode_(PERIODE_ACCES_MATIN)
 {
 }
 
 RegleAcces::RegleAcces(unsigned int niveau, const string& local, const string& periode)
-: (local_(local), niveauAccesRequis_(niveau), periode_(periode))
+: local_(local), niveauAccesRequis_(niveau), periode_(periode)
 {
 }
 
