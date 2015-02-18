@@ -28,9 +28,9 @@ bool SystemeSecurite::accederLocal(const Professeur& prof, const string& local, 
 	bool estAccepte = false;
 	int tailleVecteur = (regles_.end() - regles_.begin());
 	for (int i = 0; i < tailleVecteur; i++){
-		if ((regles_.getLocal() == local) && 
-			(regles_.getPeriode() == periode) && 
-			(regles_.getNiveauAccesRequis() >= prof.getNiveauAcces())){
+		if ((regles_[i].getLocal() == local) && 
+			(regles_[i].getPeriode() == periode) && 
+			(regles_[i].getNiveauAccesRequis() >= prof.getNiveauAcces())){
 			estAccepte = true;
 		}
 	}
