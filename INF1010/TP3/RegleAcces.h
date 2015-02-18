@@ -3,9 +3,11 @@
 
 #include <string>
 
-const string PERIODE_ACCES_MATIN =	"Matin"
-const string PERIODE_ACCES_SOIR	 = "Soir"
-const string PERIODE_ACCES_NUIT = "Nuit"
+using namespace std;
+
+const string PERIODE_ACCES_MATIN =	"Matin";
+const string PERIODE_ACCES_SOIR	 = "Soir";
+const string PERIODE_ACCES_NUIT = "Nuit";
 
 
 using namespace std;

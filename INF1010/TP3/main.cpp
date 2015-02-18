@@ -1,10 +1,10 @@
 #include "SystemeSecurite.h"
-#include"PirateInformatique.h"
+#include "PirateInformatique.h"
 
 int main()
 {
 	//Creer le systeme de securite
-	SystemeSecurite systeme();
+	SystemeSecurite systeme;
 
 	/////////////////////////////////////////////////////////////
 	//Ajouter les regles suivantes:

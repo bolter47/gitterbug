@@ -3,8 +3,8 @@
 using namespace std;
 
 SystemeSecurite::SystemeSecurite()
-:(regles_(nullptr), journalAcces_(nullptr))
 {
+	//Implémenter l'initialisation des vecteurs journal et regles
 }
 
 bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& local, const string& periode)
@@ -12,9 +12,9 @@ bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& loc
 	bool estAccepte = false;
 	int tailleVecteur = (regles_.end() - regles_.begin());
 	for (int i = 0; i < tailleVecteur; i++){
-		if ((regles_.getLocal() == local) &&
-			(regles_.getPeriode() == periode) &&
-			(regles_.getNiveauAccesRequis() >= agent.getNiveauAcces())){
+		if ((regles_[i].getLocal() == local) &&
+			(regles_[i].getPeriode() == periode) &&
+			(regles_[i].getNiveauAccesRequis() >= agent.getNiveauAcces())){
 			estAccepte = true;
 		}
 	}

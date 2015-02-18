@@ -8,8 +8,8 @@ class PirateInformatique : public AgentSecurite{
 
 public:
 	//constructeur
-	PirateInformatique(AgentSecurite pirate);
+	PirateInformatique(AgentSecurite agent);
 	//accesseur
-	unsigned getNiveauAcces();
-}
+	unsigned getNiveauAcces() const;
+};
 #endif
