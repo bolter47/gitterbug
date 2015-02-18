@@ -3,7 +3,7 @@
 using namespace std;
 
 SystemeSecurite::SystemeSecurite()
-	:(regles_(vector<RegleAcces>()), journalAcces_(vector<string>()));
+	:regles_(vector<RegleAcces>()), journalAcces_(vector<string>())
 {
 	//Implémenter l'initialisation des vecteurs journal et regles
 }
