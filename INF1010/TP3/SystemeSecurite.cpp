@@ -3,6 +3,7 @@
 using namespace std;
 
 SystemeSecurite::SystemeSecurite()
+	:(regles_.clear(), journalAcces_.clear());
 {
 	//Implémenter l'initialisation des vecteurs journal et regles
 }

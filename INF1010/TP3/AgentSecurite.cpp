@@ -8,7 +8,7 @@ AgentSecurite::AgentSecurite(const string& nom, const string& prenom):Employe(no
 	
 /*** GETTERS ***/
 	
-int AgentSecurite::getNiveauAcces() const{
+unsigned AgentSecurite::getNiveauAcces() const{
 	return accesAgentSecurite_ + Employe::getNiveauAcces();
 }
 	
