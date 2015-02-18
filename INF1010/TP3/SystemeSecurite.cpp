@@ -3,7 +3,7 @@
 using namespace std;
 
 SystemeSecurite::SystemeSecurite()
-	:(regles_.clear(), journalAcces_.clear());
+	:(regles_(vector<RegleAcces>()), journalAcces_(vector<string>()));
 {
 	//Implémenter l'initialisation des vecteurs journal et regles
 }
@@ -85,8 +85,9 @@ bool SystemeSecurite::ajouterRegle(const RegleAcces& regle)
 
 void SystemeSecurite::imprimerJournal() const
 {
+	//Stringstream?
 	int tailleVecteur = (journalAcces_.end() - journalAcces_.begin());
 	for (int i = 0; i < tailleVecteur;i++){
-		cout << journalAcces_.at(i);
+		cout << journalAcces[i];
 	}
 }

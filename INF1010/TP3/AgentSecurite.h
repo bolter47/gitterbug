@@ -14,7 +14,7 @@ class AgentSecurite : public Employe {
 	
 	/*** GETTERS ***/
 	
-	int getNiveauAcces() const;
+	unsigned getNiveauAcces() const;
 	
 	string getClasseEmploye() const;
 	
