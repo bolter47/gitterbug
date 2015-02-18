@@ -43,9 +43,9 @@ bool SystemeSecurite::accederLocal(const Etudiant& etudiant, const string& local
 	bool estAccepte = false;
 	int tailleVecteur = (regles_.end() - regles_.begin());
 	for (int i = 0; i < tailleVecteur; i++){
-		if ((regles_.getLocal() == local) &&
-			(regles_.getPeriode() == periode) &&
-			(regles_.getNiveauAccesRequis() >= etudiant.getNiveauAcces())){
+		if ((regles_[i].getLocal() == local) &&
+			(regles_[i].getPeriode() == periode) &&
+			(regles_[i].getNiveauAccesRequis() >= etudiant.getNiveauAcces())){
 			estAccepte = true;
 		}
 	}
@@ -58,9 +58,9 @@ bool SystemeSecurite::accederLocal(const string& nom, const string& prenom, cons
 	bool estAccepte = false;
 	int tailleVecteur = (regles_.end() - regles_.begin());
 	for (int i = 0; i < tailleVecteur; i++){
-		if ((regles_.getLocal() == local) &&
-			(regles_.getPeriode() == periode) &&
-			(regles_.getNiveauAccesRequis() >= niveauAcces)){
+		if ((regles_[i].getLocal() == local) &&
+			(regles_[i].getPeriode() == periode) &&
+			(regles_[i].getNiveauAccesRequis() >= niveauAcces)){
 			estAccepte = true;
 		}
 	}
@@ -73,12 +73,12 @@ bool SystemeSecurite::ajouterRegle(const RegleAcces& regle)
 	bool estPresente = false;
 	int tailleVecteur = (regles_.end() - regles_.begin());
 	for (int i = 0; i < tailleVecteur; i++){
-		if ((regles_.at(i).getLocal() == regle.getLocal()) && (regles_.at(i).getPeriode() == regle.getPeriode()) && (regles_.at(i).getNiveauAcces() == regle.getNiveauAcces())){
+		if ((regles_.at(i).getLocal() == regle.getLocal()) && (regles_.at(i).getPeriode() == regle.getPeriode()) && (regles_.at(i).getNiveauAccesRequis() == regle.getNiveauAccesRequis())){
 			estPresente = true;
 		}
 	}
 	if (!estPresente){
-		regles_.pushback(regle);
+		regles_.push_back(regle);
 	}
 	return estPresente;
 }
@@ -88,6 +88,6 @@ void SystemeSecurite::imprimerJournal() const
 	//Stringstream?
 	int tailleVecteur = (journalAcces_.end() - journalAcces_.begin());
 	for (int i = 0; i < tailleVecteur;i++){
-		cout << journalAcces[i];
+		cout << journalAcces_[i];
 	}
 }
