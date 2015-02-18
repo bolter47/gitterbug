@@ -1,15 +1,10 @@
 #include "Etudiant.h"
-#include <typeid>
+#include <typeinfo>
 
 using namespace std;
 
-Etudiant::Employe() 
-	:(nom_(""), prenom_(""), accesEmploye(0))
-{
-}
-
 Etudiant::Etudiant(const string& nom, const string& prenom)
-	:(nom_(nom), prenom_(prenom))
+	:Employe(nom, prenom)
 {
 };
 
@@ -38,9 +33,9 @@ unsigned int Etudiant::getNiveauAcces() const
 	return accesEtudiant_;
 }
 
-string getClasseEmploye() const
+string Etudiant::getClasseEmploye() const
 {
-	return *this.typeid;
+	return typeid(this).name();
 }
 
 ostream& operator<< (ostream& co, const Etudiant& etudiant)

@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <string>
+#include "Employe.h"
 
 using namespace std;
 
-class Etudiant : public Employe
-{
+class Etudiant : public Employe{
 	public:
 		Etudiant(const string& nom, const string& prenom);
 		string getNom() const;
