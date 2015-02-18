@@ -18,7 +18,7 @@ string Employe::getPrenom() const{
 	return prenom_;
 }
 
-int Employe::getNiveauAcces() const{
+unsigned Employe::getNiveauAcces() const{
 	return accesEmploye_;
 }
 string Employe::getClasseEmploye() const{
