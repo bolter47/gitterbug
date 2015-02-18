@@ -4,7 +4,7 @@ EMPEXT= AgentSecurite.o Etudiant.o Professeur.o
 all:main
 main: main.o $(EMPEXT) PirateInformatique.o SystemeSecurite.o Employe.o RegleAcces.o
 	g++ $^ -o $@ $(CFLAGS)
-	clean
+	make clean
 
 $(EMPEXT): Employe.h
 

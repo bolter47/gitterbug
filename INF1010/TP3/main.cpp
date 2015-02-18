@@ -5,6 +5,7 @@ int main()
 {
 	//Creer le systeme de securite
 	SystemeSecurite systeme;
+	cout << "syst secu cree" << endl;
 
 	/////////////////////////////////////////////////////////////
 	//Ajouter les regles suivantes:
@@ -48,7 +49,6 @@ int main()
 	RegleAcces(25, "L-4487", PERIODE_ACCES_NUIT);
 	//
 	////////////////////////////////////////////////////////////
-
 	
 	//Creer un agent de securite
 	//

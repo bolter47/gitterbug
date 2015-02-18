@@ -17,5 +17,9 @@ string AgentSecurite::getClasseEmploye() const{
 }
 	
 ostream& operator<<(ostream& out, const AgentSecurite agent){
-	return out << agent;
+	out << "Nom, Prenom: " << agent.getNom() << ", " << agent.getPrenom() << endl
+		<< "Classe d'employe: " << agent.getClasseEmploye() << endl
+		<< "Niveau d'acces: " << agent.getNiveauAcces() << endl;
+		
+		return out;
 }

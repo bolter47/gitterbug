@@ -41,7 +41,7 @@ string Etudiant::getClasseEmploye() const
 ostream& operator<< (ostream& co, const Etudiant& etudiant)
 {
 	//Employe::operator<<(cout, (Employe) etudiant);
-	co << "Nom, Prenom" << etudiant.getNom() << ", " << etudiant.getPrenom() << endl
+	co << "Nom, Prenom: " << etudiant.getNom() << ", " << etudiant.getPrenom() << endl
 		<< "Classe d'employe: " << etudiant.getClasseEmploye() << endl
 		<< "Niveau d'acces: " << etudiant.getNiveauAcces() << endl;
 	
