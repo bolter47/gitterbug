@@ -12,6 +12,7 @@ SystemeSecurite::SystemeSecurite()
 bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& local, const string& periode)
 {
 	bool estAccepte = false;
+	stringstream ss;
 	char niveauAccesString[3];
 	sprintf(niveauAccesString, "%d", agent.getNiveauAcces());
 	int tailleVecteur = (regles_.end() - regles_.begin());
@@ -22,19 +23,7 @@ bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& loc
 			estAccepte = true;
 		}
 	}
-	journalAcces_.push_back(agent.getNom());
-	journalAcces_.push_back(agent.getPrenom());
-	journalAcces_.push_back(agent.getClasseEmploye());
-	journalAcces_.push_back(niveauAccesString);
-	journalAcces_.push_back(local);
-	journalAcces_.push_back(periode);
-	if (estAccepte){
-		journalAcces_.push_back("Accorde");
-	}
-	else{
-		journalAcces_.push_back("Refuse");
-	}
-
+	journalAcces_.push_back(formatAffichage(agent.getNom(), agent.getPrenom(), agent.getClasseEmploye(), agent.getNiveauAcces(), local, periode, estAccepte));
 	return estAccepte;
 }
 
@@ -51,18 +40,7 @@ bool SystemeSecurite::accederLocal(const Professeur& prof, const string& local, 
 			estAccepte = true;
 		}
 	}
-	journalAcces_.push_back(prof.getNom());
-	journalAcces_.push_back(prof.getPrenom());
-	journalAcces_.push_back(prof.getClasseEmploye());
-	journalAcces_.push_back(niveauAccesString);
-	journalAcces_.push_back(local);
-	journalAcces_.push_back(periode);
-	if (estAccepte){
-		journalAcces_.push_back("Accorde");
-	}
-	else{
-		journalAcces_.push_back("Refuse");
-	}
+	journalAcces_.push_back(formatAffichage(prof.getNom(), prof.getPrenom(), prof.getClasseEmploye(), prof.getNiveauAcces(), local, periode, estAccepte));
 	return estAccepte;
 }
 
@@ -79,18 +57,7 @@ bool SystemeSecurite::accederLocal(const Etudiant& etudiant, const string& local
 			estAccepte = true;
 		}
 	}
-	journalAcces_.push_back(etudiant.getNom());
-	journalAcces_.push_back(etudiant.getPrenom());
-	journalAcces_.push_back(etudiant.getClasseEmploye());
-	journalAcces_.push_back(niveauAccesString);
-	journalAcces_.push_back(local);
-	journalAcces_.push_back(periode);
-	if (estAccepte){
-		journalAcces_.push_back("Accorde");
-	}
-	else{
-		journalAcces_.push_back("Refuse");
-	}
+	journalAcces_.push_back(formatAffichage(etudiant.getNom(), etudiant.getPrenom(), etudiant.getClasseEmploye(), etudiant.getNiveauAcces(), local, periode, estAccepte));
 	return estAccepte;
 }
 
@@ -107,18 +74,8 @@ bool SystemeSecurite::accederLocal(const string& nom, const string& prenom, cons
 			estAccepte = true;
 		}
 	}
-	journalAcces_.push_back(nom);
-	journalAcces_.push_back(prenom);
-	journalAcces_.push_back(fonction);
-	journalAcces_.push_back(niveauAccesString);
-	journalAcces_.push_back(local);
-	journalAcces_.push_back(periode);
-	if (estAccepte){
-		journalAcces_.push_back("Accorde");
-	}
-	else{
-		journalAcces_.push_back("Refuse");
-	}
+	journalAcces_.push_back(formatAffichage(nom, prenom, fonction, niveauAcces, local, periode, estAccepte));
+
 	return estAccepte;
 }
 
@@ -139,22 +96,31 @@ bool SystemeSecurite::ajouterRegle(const RegleAcces& regle)
 
 void SystemeSecurite::imprimerJournal() const
 {
-	stringstream ss;
-	string nom, prenom, fonction, niveauAcces, local, periode, acces;
-	ss << "Nom, Prenom:" << nom << ", " << prenom << endl
-		<< "Classe d'employe: " << fonction << endl
-		<< "Niveau d'acces: " << niveauAcces << endl
-		<< "Local: " << local << endl
-		<< "Periode: " << periode << endl
-		<< "Acces: " << acces << endl;
-
 	int tailleVecteur = (journalAcces_.end() - journalAcces_.begin());
-	int position = 0;
-	for (int j = 0; j < ((tailleVecteur + 7) / 7); j++){
-		for (int i = 0; i < 8; i++){
-			ss << journalAcces_[position];
-			position++;
-		}
+	for (int i = 0; i < tailleVecteur; i++){
+		cout << journalAcces_[i];
 	}
-	cout << ss.str() << endl;
+}
+
+string formatAffichage(const string& nom, const string& prenom, const string& fonction, unsigned int niveauAcces, const string& local, const string& periode, const bool estAccede){
+	stringstream ss;
+	if (estAccede){
+		ss << "Nom, Prenom:" << nom << ", " << prenom << endl
+			<< "Classe d'employe: " << fonction << endl
+			<< "Niveau d'acces: " << niveauAcces << endl
+			<< "Local: " << local << endl
+			<< "Periode: " << periode << endl
+			<< "Acces: Accorde" << endl;
+	}
+	else{
+		ss << "Nom, Prenom:" << nom << ", " << prenom << endl
+			<< "Classe d'employe: " << fonction << endl
+			<< "Niveau d'acces: " << niveauAcces << endl
+			<< "Local: " << local << endl
+			<< "Periode: " << periode << endl
+			<< "Acces: Refuse" << endl;
+	}
+	
+	string affichage = ss.str();
+		return affichage;
 }
