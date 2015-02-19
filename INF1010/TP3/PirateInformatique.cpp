@@ -5,6 +5,6 @@ PirateInformatique::PirateInformatique(AgentSecurite agent) : AgentSecurite(agen
 }
 
 //accesseur
-unsigned PirateInformatique::getNiveauAcces() const{
+unsigned int PirateInformatique::getNiveauAcces() const{
 	return Employe::getNiveauAcces() + AgentSecurite::getNiveauAcces();
 }

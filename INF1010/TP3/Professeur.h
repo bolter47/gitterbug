@@ -18,7 +18,7 @@ public:
 	friend ostream& operator<<(ostream& out, Professeur& professeur);
 
 private:
-	const unsigned accesProfesseur_ = 10;
+	const unsigned int accesProfesseur_ = 10;
 };
 
 #endif

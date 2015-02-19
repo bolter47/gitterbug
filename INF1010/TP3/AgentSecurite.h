@@ -14,14 +14,14 @@ class AgentSecurite : public Employe {
 	
 	/*** GETTERS ***/
 	
-	unsigned getNiveauAcces() const;
+	unsigned int getNiveauAcces() const;
 	
 	string getClasseEmploye() const;
 	
 	friend ostream& operator<<(ostream& out, const AgentSecurite agent);
 	
 	private:
-	const int accesAgentSecurite_ = 20;
+	const unsigned int accesAgentSecurite_ = 20;
 
 };
 

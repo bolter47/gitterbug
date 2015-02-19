@@ -3,7 +3,7 @@
 Professeur::Professeur(string nom, string prenom):Employe(nom, prenom){
 }
 
-unsigned Professeur::getNiveauAcces() const{
+unsigned int Professeur::getNiveauAcces() const{
 	return accesProfesseur_ + Employe::getNiveauAcces();
 }
 

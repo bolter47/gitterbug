@@ -16,7 +16,7 @@ class Employe{
 		/*** GETTERS ***/
 	string getNom() const;
 	string getPrenom() const;
-	unsigned getNiveauAcces() const;
+	unsigned int getNiveauAcces() const;
 	string getClasseEmploye() const;
 	
 	private:

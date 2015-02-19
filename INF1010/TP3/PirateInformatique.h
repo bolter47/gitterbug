@@ -10,6 +10,6 @@ public:
 	//constructeur
 	PirateInformatique(AgentSecurite agent);
 	//accesseur
-	unsigned getNiveauAcces() const;
+	unsigned int getNiveauAcces() const;
 };
 #endif
