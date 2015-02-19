@@ -13,7 +13,7 @@ bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& loc
 {
 	bool estAccepte = false;
 	char niveauAccesString[3];
-	sprintf(niveauAccesString, "%d", agent.getNiveauAcces);
+	sprintf(niveauAccesString, "%d", agent.getNiveauAcces());
 	int tailleVecteur = (regles_.end() - regles_.begin());
 	for (int i = 0; i < tailleVecteur; i++){
 		if ((regles_[i].getLocal() == local) &&
@@ -22,9 +22,9 @@ bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& loc
 			estAccepte = true;
 		}
 	}
-	journalAcces_.push_back(agent.getNom);
-	journalAcces_.push_back(agent.getPrenom);
-	journalAcces_.push_back(agent.getClasseEmploye);
+	journalAcces_.push_back(agent.getNom());
+	journalAcces_.push_back(agent.getPrenom());
+	journalAcces_.push_back(agent.getClasseEmploye());
 	journalAcces_.push_back(niveauAccesString);
 	journalAcces_.push_back(local);
 	journalAcces_.push_back(periode);
@@ -42,7 +42,7 @@ bool SystemeSecurite::accederLocal(const Professeur& prof, const string& local, 
 {
 	bool estAccepte = false;
 	char niveauAccesString[3];
-	sprintf(niveauAccesString, "%d", prof.getNiveauAcces);
+	sprintf(niveauAccesString, "%d", prof.getNiveauAcces());
 	int tailleVecteur = (regles_.end() - regles_.begin());
 	for (int i = 0; i < tailleVecteur; i++){
 		if ((regles_[i].getLocal() == local) && 
@@ -51,9 +51,9 @@ bool SystemeSecurite::accederLocal(const Professeur& prof, const string& local, 
 			estAccepte = true;
 		}
 	}
-	journalAcces_.push_back(prof.getNom);
-	journalAcces_.push_back(prof.getPrenom);
-	journalAcces_.push_back(prof.getClasseEmploye);
+	journalAcces_.push_back(prof.getNom());
+	journalAcces_.push_back(prof.getPrenom());
+	journalAcces_.push_back(prof.getClasseEmploye());
 	journalAcces_.push_back(niveauAccesString);
 	journalAcces_.push_back(local);
 	journalAcces_.push_back(periode);
@@ -70,7 +70,7 @@ bool SystemeSecurite::accederLocal(const Etudiant& etudiant, const string& local
 {
 	bool estAccepte = false;
 	char niveauAccesString[3];
-	sprintf(niveauAccesString, "%d", etudiant.getNiveauAcces);
+	sprintf(niveauAccesString, "%d", etudiant.getNiveauAcces());
 	int tailleVecteur = (regles_.end() - regles_.begin());
 	for (int i = 0; i < tailleVecteur; i++){
 		if ((regles_[i].getLocal() == local) &&
@@ -79,9 +79,9 @@ bool SystemeSecurite::accederLocal(const Etudiant& etudiant, const string& local
 			estAccepte = true;
 		}
 	}
-	journalAcces_.push_back(etudiant.getNom);
-	journalAcces_.push_back(etudiant.getPrenom);
-	journalAcces_.push_back(etudiant.getClasseEmploye);
+	journalAcces_.push_back(etudiant.getNom());
+	journalAcces_.push_back(etudiant.getPrenom());
+	journalAcces_.push_back(etudiant.getClasseEmploye());
 	journalAcces_.push_back(niveauAccesString);
 	journalAcces_.push_back(local);
 	journalAcces_.push_back(periode);
