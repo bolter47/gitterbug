@@ -49,11 +49,11 @@ bool SystemeSecurite::accederLocal(const Etudiant& etudiant, const string& local
 	bool estAccepte = false;
 	char niveauAccesString[3];
 	sprintf(niveauAccesString, "%d", etudiant.getNiveauAcces());
-	int tailleVecteur = (regles_.end() - regles_.begin());
-	for (int i = 0; i < tailleVecteur; i++){
+	for (unsigned i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) &&
 			(regles_[i].getPeriode() == periode) &&
-			(regles_[i].getNiveauAccesRequis() >= etudiant.getNiveauAcces())){
+			(regles_[i].getNiveauAccesRequis() >= etudiant.getNiveauAcces()) &&
+			!estAccepte){
 			estAccepte = true;
 		}
 	}
