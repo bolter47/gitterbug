@@ -24,6 +24,7 @@ public:
 	bool ajouterRegle(const RegleAcces& regle);
 
 	void imprimerJournal() const;
+	string formatAffichage(const string& nom, const string& prenom, const string& fonction, unsigned int niveauAcces, const string& local, const string& periode, const bool estAccede);
 
 private:
 	vector<RegleAcces>		regles_;

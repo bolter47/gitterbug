@@ -102,7 +102,7 @@ void SystemeSecurite::imprimerJournal() const
 	}
 }
 
-string formatAffichage(const string& nom, const string& prenom, const string& fonction, unsigned int niveauAcces, const string& local, const string& periode, const bool estAccede){
+string SystemeSecurite :: formatAffichage(const string& nom, const string& prenom, const string& fonction, unsigned int niveauAcces, const string& local, const string& periode, const bool estAccede){
 	stringstream ss;
 	if (estAccede){
 		ss << "Nom, Prenom:" << nom << ", " << prenom << endl
@@ -122,5 +122,5 @@ string formatAffichage(const string& nom, const string& prenom, const string& fo
 	}
 	
 	string affichage = ss.str();
-		return affichage;
+	return affichage;
 }
