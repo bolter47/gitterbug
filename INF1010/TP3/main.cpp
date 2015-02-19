@@ -86,11 +86,11 @@ int main()
 	//	Local		Periode
 	//
 	//	"L-3587",	PERIODE_ACCES_NUIT
-	cout << systeme.accederLocal(agent, "L-3587", PERIODE_ACCES_NUIT) << endl;
+	systeme.accederLocal(agent, "L-3587", PERIODE_ACCES_NUIT);
 	//	"L-4489",	PERIODE_ACCES_SOIR
-	cout << systeme.accederLocal(agent, "L-4489", PERIODE_ACCES_SOIR) << endl;
+	systeme.accederLocal(agent, "L-4489", PERIODE_ACCES_SOIR);
 	//	"L-4487",	PERIODE_ACCES_NUIT
-	cout << systeme.accederLocal(agent, "L-4487", PERIODE_ACCES_NUIT) << endl;
+	systeme.accederLocal(agent, "L-4487", PERIODE_ACCES_NUIT);
 	//
 	//
 	
@@ -101,11 +101,11 @@ int main()
 	//	Local		Periode
 	//
 	//	"L-3587",	PERIODE_ACCES_MATIN
-	cout << systeme.accederLocal(professeur, "L-3587", PERIODE_ACCES_MATIN) << endl;
+	systeme.accederLocal(professeur, "L-3587", PERIODE_ACCES_MATIN);
 	//	"L-4489",	PERIODE_ACCES_NUIT
-	cout << systeme.accederLocal(professeur, "L-4489", PERIODE_ACCES_NUIT) << endl;
+	systeme.accederLocal(professeur, "L-4489", PERIODE_ACCES_NUIT);
 	//	"L-4487",	PERIODE_ACCES_SOIR
-	cout << systeme.accederLocal(professeur, "L-4487", PERIODE_ACCES_SOIR) << endl;
+	systeme.accederLocal(professeur, "L-4487", PERIODE_ACCES_SOIR);
 	//
 	//
 	
@@ -116,11 +116,11 @@ int main()
 	//	Local		Periode
 	//
 	//	"L-3589",	PERIODE_ACCES_MATIN
-	cout << systeme.accederLocal(etudiant, "L-3589", PERIODE_ACCES_MATIN) << endl;
+	systeme.accederLocal(etudiant, "L-3589", PERIODE_ACCES_MATIN);
 	//	"L-4489",	PERIODE_ACCES_NUIT
-	cout << systeme.accederLocal(etudiant, "L-4489", PERIODE_ACCES_MATIN) << endl;
+	systeme.accederLocal(etudiant, "L-4489", PERIODE_ACCES_MATIN);
 	//	"L-3589",	PERIODE_ACCES_SOIR
-	cout << systeme.accederLocal(etudiant, "L-3589", PERIODE_ACCES_MATIN) << endl;
+	systeme.accederLocal(etudiant, "L-3589", PERIODE_ACCES_MATIN);
 	//
 	//
 	
@@ -133,11 +133,11 @@ int main()
 	//	Local		Periode
 	//
 	//	"L-3587",	PERIODE_ACCES_NUIT
-	cout << systeme.accederLocal(pirate, "L-3587", PERIODE_ACCES_NUIT) << endl;
+	systeme.accederLocal(pirate, "L-3587", PERIODE_ACCES_NUIT);
 	//	"L-4489",	PERIODE_ACCES_SOIR
-	cout << systeme.accederLocal(pirate, "L-4489", PERIODE_ACCES_SOIR) << endl;
+	systeme.accederLocal(pirate, "L-4489", PERIODE_ACCES_SOIR);
 	//	"L-4487",	PERIODE_ACCES_NUIT
-	cout << systeme.accederLocal(pirate, "L-4487", PERIODE_ACCES_NUIT) << endl;
+	systeme.accederLocal(pirate, "L-4487", PERIODE_ACCES_NUIT);
 	//
 	//
 	
