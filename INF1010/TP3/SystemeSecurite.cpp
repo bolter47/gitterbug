@@ -13,8 +13,6 @@ bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& loc
 {
 	bool estAccepte = false;
 	stringstream ss;
-	char niveauAccesString[3];
-	sprintf(niveauAccesString, "%d", agent.getNiveauAcces());
 	for (unsigned int i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) &&
 			(regles_[i].getPeriode() == periode) &&
@@ -30,8 +28,6 @@ bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& loc
 bool SystemeSecurite::accederLocal(const Professeur& prof, const string& local, const string& periode)
 {
 	bool estAccepte = false;
-	char niveauAccesString[3];
-	sprintf(niveauAccesString, "%d", prof.getNiveauAcces());
 	for (unsigned int i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) && 
 			(regles_[i].getPeriode() == periode) && 
@@ -47,8 +43,6 @@ bool SystemeSecurite::accederLocal(const Professeur& prof, const string& local, 
 bool SystemeSecurite::accederLocal(const Etudiant& etudiant, const string& local, const string& periode)
 {
 	bool estAccepte = false;
-	char niveauAccesString[3];
-	sprintf(niveauAccesString, "%d", etudiant.getNiveauAcces());
 	for (unsigned int i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) &&
 			(regles_[i].getPeriode() == periode) &&
@@ -64,8 +58,6 @@ bool SystemeSecurite::accederLocal(const Etudiant& etudiant, const string& local
 bool SystemeSecurite::accederLocal(const string& nom, const string& prenom, const string& fonction, unsigned int niveauAcces, const string& local, const string& periode)
 {
 	bool estAccepte = false;
-	char niveauAccesString[3];
-	sprintf(niveauAccesString, "%d", niveauAcces);
 	for (unsigned int i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) &&
 			(regles_[i].getPeriode() == periode) &&
