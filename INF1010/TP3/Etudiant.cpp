@@ -6,7 +6,7 @@ using namespace std;
 Etudiant::Etudiant(const string& nom, const string& prenom)
 	:Employe(nom, prenom)
 {
-};
+}
 
 string Etudiant :: getNom() const
 {

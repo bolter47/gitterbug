@@ -12,40 +12,40 @@ int main()
 	//	niveau d'acces	Local		Periode
 	//
 	//	1,				"L-3589",	PERIODE_ACCES_MATIN
-	RegleAcces(1, "L-3589", PERIODE_ACCES_MATIN);
+	systeme.ajouterRegle(RegleAcces(1, "L-3589", PERIODE_ACCES_MATIN));
 	//	1,				"L-3587",	PERIODE_ACCES_MATIN
-	RegleAcces(1, "L-3587", PERIODE_ACCES_MATIN);
+	systeme.ajouterRegle(RegleAcces(1, "L-3587", PERIODE_ACCES_MATIN));
 	//	1,				"L-3588",	PERIODE_ACCES_MATIN
-	RegleAcces(1, "L-3588", PERIODE_ACCES_MATIN);
+	systeme.ajouterRegle(RegleAcces(1, "L-3588", PERIODE_ACCES_MATIN));
 	//
 	//	5,				"L-3589",	PERIODE_ACCES_SOIR
-	RegleAcces(5, "L-3589", PERIODE_ACCES_SOIR);
+	systeme.ajouterRegle(RegleAcces(5, "L-3589", PERIODE_ACCES_SOIR));
 	//	5,				"L-3587",	PERIODE_ACCES_SOIR
-	RegleAcces(5, "L-3587", PERIODE_ACCES_SOIR);
+	systeme.ajouterRegle(RegleAcces(5, "L-3587", PERIODE_ACCES_SOIR));
 	//	5,				"L-3588",	PERIODE_ACCES_SOIR
-	RegleAcces(5, "L-3588", PERIODE_ACCES_SOIR);
+	systeme.ajouterRegle(RegleAcces(5, "L-3588", PERIODE_ACCES_SOIR));
 	//
 	//	20,				"L-3589",	PERIODE_ACCES_NUIT
-	RegleAcces(20, "L-3589", PERIODE_ACCES_NUIT);
+	systeme.ajouterRegle(RegleAcces(20, "L-3589", PERIODE_ACCES_NUIT));
 	//	20,				"L-3587",	PERIODE_ACCES_NUIT
-	RegleAcces(20, "L-3587", PERIODE_ACCES_NUIT);
+	systeme.ajouterRegle(RegleAcces(20, "L-3587", PERIODE_ACCES_NUIT));
 	//	25,				"L-3588",	PERIODE_ACCES_NUIT
-	RegleAcces(25, "L-3588", PERIODE_ACCES_NUIT);
+	systeme.ajouterRegle(RegleAcces(25, "L-3588", PERIODE_ACCES_NUIT));
 	//
 	//	10,				"L-4489",	PERIODE_ACCES_MATIN
-	RegleAcces(10, "L-4489", PERIODE_ACCES_MATIN);
+	systeme.ajouterRegle(RegleAcces(10, "L-4489", PERIODE_ACCES_MATIN));
 	//	10,				"L-4487",	PERIODE_ACCES_MATIN
-	RegleAcces(10, "L-4487", PERIODE_ACCES_MATIN);
+	systeme.ajouterRegle(RegleAcces(10, "L-4487", PERIODE_ACCES_MATIN));
 	//
 	//	10,				"L-4489",	PERIODE_ACCES_SOIR
-	RegleAcces(10, "L-4489", PERIODE_ACCES_SOIR);
+	systeme.ajouterRegle(RegleAcces(10, "L-4489", PERIODE_ACCES_SOIR));
 	//	10,				"L-4487",	PERIODE_ACCES_SOIR
-	RegleAcces(10, "L-4487", PERIODE_ACCES_SOIR);
+	systeme.ajouterRegle(RegleAcces(10, "L-4487", PERIODE_ACCES_SOIR));
 	//
 	//	20,				"L-4489",	PERIODE_ACCES_NUIT
-	RegleAcces(20, "L-4489", PERIODE_ACCES_NUIT);
+	systeme.ajouterRegle(RegleAcces(20, "L-4489", PERIODE_ACCES_NUIT));
 	//	25,				"L-4487",	PERIODE_ACCES_NUIT
-	RegleAcces(25, "L-4487", PERIODE_ACCES_NUIT);
+	systeme.ajouterRegle(RegleAcces(25, "L-4487", PERIODE_ACCES_NUIT));
 	//
 	////////////////////////////////////////////////////////////
 	
