@@ -18,7 +18,8 @@ bool SystemeSecurite::accederLocal(const AgentSecurite& agent, const string& loc
 	for (unsigned int i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) &&
 			(regles_[i].getPeriode() == periode) &&
-			(regles_[i].getNiveauAccesRequis() >= agent.getNiveauAcces())){
+			(regles_[i].getNiveauAccesRequis() >= agent.getNiveauAcces()) &&
+			(!estAccepte)){
 			estAccepte = true;
 		}
 	}
@@ -34,7 +35,8 @@ bool SystemeSecurite::accederLocal(const Professeur& prof, const string& local, 
 	for (unsigned int i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) && 
 			(regles_[i].getPeriode() == periode) && 
-			(regles_[i].getNiveauAccesRequis() >= prof.getNiveauAcces())){
+			(regles_[i].getNiveauAccesRequis() >= prof.getNiveauAcces()) &&
+			(!estAccepte)){
 			estAccepte = true;
 		}
 	}
@@ -50,7 +52,8 @@ bool SystemeSecurite::accederLocal(const Etudiant& etudiant, const string& local
 	for (unsigned int i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) &&
 			(regles_[i].getPeriode() == periode) &&
-			(regles_[i].getNiveauAccesRequis() >= etudiant.getNiveauAcces())){
+			(regles_[i].getNiveauAccesRequis() >= etudiant.getNiveauAcces()) &&
+			(!estAccepte)){
 			estAccepte = true;
 		}
 	}
@@ -66,7 +69,8 @@ bool SystemeSecurite::accederLocal(const string& nom, const string& prenom, cons
 	for (unsigned int i = 0; i < regles_.size(); i++){
 		if ((regles_[i].getLocal() == local) &&
 			(regles_[i].getPeriode() == periode) &&
-			(regles_[i].getNiveauAccesRequis() >= niveauAcces)){
+			(regles_[i].getNiveauAccesRequis() >= niveauAcces) &&
+			(!estAccepte)){
 			estAccepte = true;
 		}
 	}
@@ -91,7 +95,7 @@ bool SystemeSecurite::ajouterRegle(const RegleAcces& regle)
 
 void SystemeSecurite::imprimerJournal() const
 {
-	for (int i = 0; i < journalAcces_.size(); i++){
+	for (unsigned int i = 0; i < journalAcces_.size(); i++){
 		cout << journalAcces_[i];
 	}
 }
