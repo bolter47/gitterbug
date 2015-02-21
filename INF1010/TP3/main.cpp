@@ -1,3 +1,11 @@
+/**
+* L'éxécution principal du code. Créer différents dérivés d'Employe et des règles d'acces dans un système
+* et simule l'acces à des locaux selon ce systeme.
+* \file   main.cpp
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #include "SystemeSecurite.h"
 #include "PirateInformatique.h"
 

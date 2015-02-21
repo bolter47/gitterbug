@@ -1,3 +1,10 @@
+/**
+* Le Header de la classe qui définit les permissions d'acces pour un local
+* \file   RegleAcces.h
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #ifndef REGLES_ACCES_H
 #define	REGLES_ACCES_H
 

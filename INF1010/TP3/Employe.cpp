@@ -1,3 +1,10 @@
+/**
+* L'implémentation de la classe d'employé qui contient des méthodes d'obtention de nom et de niveau d'acces
+* \file   Employe.cpp
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #include "Employe.h"
 #include <typeinfo>
 

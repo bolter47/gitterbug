@@ -1,3 +1,10 @@
+/**
+* Le Header de la classe Employe qui possède les méthodes et attributs communs à chaque personne qui fréquente la poly
+* \file   Employe.h
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #ifndef H_EMPLOYE
 #define H_EMPLOYE
 

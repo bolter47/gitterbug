@@ -1,3 +1,10 @@
+/**
+* Le Header de la classe Etudiant qui est une extension d'Employe avec un bas niveau d'acces
+* \file   SystemeSecurite.h
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #ifndef ETUDIANT_H
 #define ETUDIANT_H
 

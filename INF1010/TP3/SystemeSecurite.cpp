@@ -1,3 +1,11 @@
+/**
+* L'implémentation de la classe Système de sécurité avec plusieurs méthodes pour acceder à des locaux
+* ainsi que des méthodes pour enregistrer ces acces
+* \file   SystemeSecurite.cpp
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #include "SystemeSecurite.h"
 #include <sstream>
 

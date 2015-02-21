@@ -1,3 +1,10 @@
+/**
+* Le Header de la classe de l'Agent de sécurité qui est une extension d'employe
+* \file   AgentSecurite.h
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #ifndef H_AGENTSECURITE
 #define H_AGENTSECURITE
 

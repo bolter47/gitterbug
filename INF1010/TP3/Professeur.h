@@ -1,3 +1,10 @@
+/**
+* Le Header de la classe du professeur qui possede un moyennement haut niveau d'acces
+* \file   Professeur.h
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #ifndef PROFESSEUR_H
 #define PROFESSEUR_H
 

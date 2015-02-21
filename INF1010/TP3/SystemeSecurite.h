@@ -1,3 +1,11 @@
+/**
+* Le Header de la classe du système de sécurité qui prend des règles d'acces pour évaluer
+* la permission d'acces à un local et fait des logs de ces tentatives d'acces
+* \file   SystemeSecurite.h
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #ifndef	SYSTEME_SECURITE_H
 #define SYSTEME_SECURITE_H
 
@@ -24,9 +32,11 @@ public:
 	bool ajouterRegle(const RegleAcces& regle);
 
 	void imprimerJournal() const;
-	string formatAffichage(const string& nom, const string& prenom, const string& fonction, unsigned int niveauAcces, const string& local, const string& periode, const bool estAccede);
 
 private:
+
+	string formatAffichage(const string& nom, const string& prenom, const string& fonction, unsigned int niveauAcces, const string& local, const string& periode, const bool estAccede);
+
 	vector<RegleAcces>		regles_;
 	vector<string>			journalAcces_;
 };

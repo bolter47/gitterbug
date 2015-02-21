@@ -1,3 +1,10 @@
+/**
+* L'implémentation de la classe d'agent de sécurité qui inclut des surcharges des méthodes de la classe Employe
+* \file   AgentSecurite.cpp
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #include "AgentSecurite.h"
 
 using namespace std;

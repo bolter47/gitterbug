@@ -1,3 +1,10 @@
+/**
+* L'implémentation de la classe d'Étudiant qui inclut des surcharges des méthodes de la classe Employe
+* \file   Etudiant.cpp
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #include "Etudiant.h"
 #include <typeinfo>
 

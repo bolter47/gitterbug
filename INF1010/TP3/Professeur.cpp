@@ -1,3 +1,10 @@
+/**
+* L'implémentation de la classe du professeur qui inclut des surcharges des méthodes de la classe Employe
+* \file   Professeur.cpp
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #include "Professeur.h"
 
 Professeur::Professeur(string nom, string prenom):Employe(nom, prenom){

@@ -1,3 +1,10 @@
+/**
+* L'implémentation de la classe d'objets définissant des règles d'acces pour des locaux
+* \file   RegleAcces.cpp
+* \author Gendreau, Vincent et Courbariaux
+* \date   11 février 2015
+*/
+
 #include "RegleAcces.h"
 
 using namespace std;
