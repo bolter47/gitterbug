@@ -12,13 +12,13 @@ class DateHeure:BaseDeDonnees{
 	DateHeure();
 	
 	// Méthodes d'accès
-	void getHeure() 		const;
-	void getMinute()		const;
-	void getSeconde() 		const;
-	void getJourMois() 		const;
-	void getJourSemaine() 	const;
-	void getMois() 			const;
-	void getAnnee() 		const;
+	int getHeure() 			const;
+	int getMinute()			const;
+	int getSeconde() 		const;
+	int getJourMois() 		const;
+	int getJourSemaine() 	const;
+	int getMois() 			const;
+	int getAnnee() 			const;
 	
 	// Redef de mise a jour
 	void mettreAJourDonnees();
