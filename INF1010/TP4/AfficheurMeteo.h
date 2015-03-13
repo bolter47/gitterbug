@@ -3,6 +3,7 @@
 
 #include "Afficheur.h"
 #include "Connection.h"
+#include "Meteo.h"
 
 class AfficheurMeteo: Afficheur, Connection{
 	public:
@@ -22,8 +23,7 @@ class AfficheurMeteo: Afficheur, Connection{
 	
 	// Base de donnees source
 	Meteo donnees_;
-	
 
-}
+};
 
 #endif

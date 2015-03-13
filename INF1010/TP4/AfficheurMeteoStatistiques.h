@@ -3,6 +3,7 @@
 
 #include "Afficheur.h"
 #include "Connection.h"
+#include "Meteo.h"
 
 class AfficheurMeteoStatistiques: Afficheur, Connection{
 	public:
@@ -25,6 +26,6 @@ class AfficheurMeteoStatistiques: Afficheur, Connection{
 	int nbDonnees_;
 	
 
-}
+};
 
 #endif

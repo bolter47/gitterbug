@@ -28,7 +28,7 @@ class DateHeure:BaseDeDonnees{
 	// Attributs
 	unsigned heure_, minute_, seconde_, jourMois_, jourSemaine_, mois_, annee_;
 
-}
+};
 
 
 #endif

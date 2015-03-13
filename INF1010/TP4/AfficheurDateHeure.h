@@ -3,6 +3,8 @@
 
 #include "Afficheur.h"
 #include "Connection.h"
+#include "DateHeure.h"
+#include <string>
 
 const string JOUR_STRING_FR[] = { "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" };
 const string MOIS_STRING_FR[] = { "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre" };
@@ -25,6 +27,6 @@ class AfficheurDateHeure: Afficheur, Connection{
 	private:
 	
 	DateHeure dateHeure_;
-}
+};
 
 #endif
