@@ -4,6 +4,8 @@
 #include "Afficheur.h"
 #include "Connection.h"
 #include "Meteo.h"
+#include <iostream>
+#include <string>
 
 class AfficheurMeteo: Afficheur, Connection{
 	public:

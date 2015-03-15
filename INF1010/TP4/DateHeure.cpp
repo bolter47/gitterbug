@@ -50,4 +50,6 @@ void DateHeure::mettreAJourDonnees(){
 	mois_ = timeInfo->tm_mon;
 	annee_ = timeInfo->tm_year;
 	jourSemaine_ = timeInfo->tm_wday;
+	
+	mettreAJourConnections(this);
 }

@@ -2,6 +2,7 @@
 #define AFFICHEUR_H
 
 #include <string>
+#include <typeinfo>
 
 using namespace std;
 
