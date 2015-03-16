@@ -20,12 +20,14 @@ class AfficheurMeteoStatistiques: Afficheur, Connection{
 	//Redefs de Connection
 	void mettreAJourConnection(BaseDeDonnees* donnees);
 	
+	//DRY
+	void statistiquesMoyennes();
 	
 	private:
-	
 	// Archives meteos precedents par composition
 	Meteo donneesDerniereAnnee_* [365];
 	unsigned int nbDonnees_;
+	float tempMoyenneAnnuelle_,vitesseVentsMoyenAnnuelle_,visibiliteMoyenneAnnuelle_;
 };
 
 #endif

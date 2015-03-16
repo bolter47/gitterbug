@@ -1,12 +1,7 @@
-#include <Afficheur.h>
-#include <Connection.h>
-#include <Meteo.h>
-#include <AfficheurMeteo.h>
-
-AfficheurMeteo :: AfficheurMeteo() :
-donnees_(0)
-{
-}
+#include "Afficheur.h"
+#include "Connection.h"
+#include "Meteo.h"
+#include "AfficheurMeteo.h"
 
 void AfficheurMeteo :: afficherFrancais()		const{
 	cout << "Temperature courante: " << donnees_.getTemperature() << " degres Celsius" << endl
@@ -25,6 +20,6 @@ string AfficheurMeteo :: getTypeAfficheur()		const{
 	return typeid(AfficheurMeteo).name();
 }
 
-void mettreAJourConnection(BaseDeDonnees* donnees){
+void AfficheurMeteo::mettreAJourConnection(BaseDeDonnees* donnees){
 	donnees_= &donnees;
 }

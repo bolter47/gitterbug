@@ -5,6 +5,7 @@
 #include "Connection.h"
 #include "DateHeure.h"
 #include <string>
+#include <iostream>
 
 const string JOUR_STRING_FR[] = { "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" };
 const string MOIS_STRING_FR[] = { "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre" };
@@ -17,7 +18,7 @@ class AfficheurDateHeure: Afficheur, Connection{
 	public:
 	
 	// Redefs Afficheage
-	void afficherFrançais() const;
+	void afficherFrancais() const;
 	void afficherAnglais()	const;
 	string getTypeAfficheur() const;
 	
