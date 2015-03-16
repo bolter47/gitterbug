@@ -7,6 +7,8 @@
 
 class AfficheurMeteoStatistiques: Afficheur, Connection{
 	public:
+	AfficheurMeteoStatistiques();
+	~AfficheurMeteoStatistiques();
 	
 	// Redef methodes d'afficheage
 	void afficherFrancais() const;
@@ -23,9 +25,7 @@ class AfficheurMeteoStatistiques: Afficheur, Connection{
 	
 	// Archives meteos precedents par composition
 	Meteo donneesDerniereAnnee_* [365];
-	int nbDonnees_;
-	
-
+	unsigned int nbDonnees_;
 };
 
 #endif
