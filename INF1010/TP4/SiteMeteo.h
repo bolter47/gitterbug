@@ -3,6 +3,7 @@
 
 #include "Afficheur.h"
 #include <vector>
+#include <iostream>
 
 using namespace std;
 

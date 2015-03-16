@@ -1,27 +1,32 @@
-#include "Sitemeteo.h"
+#include "SiteMeteo.h"
 
 
-SteMeteo::SiteMeteo(){}
+SiteMeteo::SiteMeteo(){}
 
 void SiteMeteo::ajouterAfficheur(Afficheur* afficheur){
 	afficheurs_.push_back(afficheur);
 }
 
 void SiteMeteo::retirerAfficheur(Afficheur* afficheur){
-	for (unsigned i = 0; afficheurs_.sise(); i++){
-		if(afficheurs_[i] == afficheur) afficheurs_.erase(i);
-	}
+	for (unsigned i = 0; afficheurs_.size(); i++)
+		if(afficheurs_[i] == afficheur){
+			vector<Afficheur*>::iterator it = afficheurs_.begin();
+			it += i;
+			afficheurs_.erase(it);
+		}
 }
 
 
 void SiteMeteo::afficherSite(){
-	for (unsigned i = 0; afficheurs_.sise(); i++){
+	for (unsigned i = 0; afficheurs_.size(); i++){
 		// TODO Entête du cout
 		cout << "----------------------------"
-		cout << "----------------------------"
-		<< afficheurs_ -> getTypeAfficheur()
-		<< "----------------------------" << endl
-		afficheurs_ -> Afficheur();
+		<< afficheurs_[i] -> getTypeAfficheur()
+		<< "----------------------------" << endl;
+		if (langue_ == FRANCAIS)
+			afficheurs_[i] -> afficherFrancais();
+		else
+			afficheurs_[i] -> afficherAnglais();
 	}
 }
 

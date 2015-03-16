@@ -15,7 +15,7 @@ class AfficheurMeteo: Afficheur, Connection{
 	void afficherAnglais() 	const;
 	
 	// Autres redef d'Afficheur
-	string getTypeAfficheur() 		const;
+	string getTypeAfficheur() 	const;
 	
 	//Redefs de Connection
 	void mettreAJourConnection(BaseDeDonnees* donnees);
