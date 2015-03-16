@@ -21,5 +21,5 @@ string AfficheurMeteo :: getTypeAfficheur()		const{
 }
 
 void AfficheurMeteo::mettreAJourConnection(BaseDeDonnees* donnees){
-	donnees_= &donnees;
+	donnees_ = *donnees;
 }

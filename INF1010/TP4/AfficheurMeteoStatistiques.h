@@ -4,8 +4,9 @@
 #include "Afficheur.h"
 #include "Connection.h"
 #include "Meteo.h"
+#include <iostream>
 
-class AfficheurMeteoStatistiques: Afficheur, Connection{
+class AfficheurMeteoStatistiques: public Afficheur, Connection{
 	public:
 	AfficheurMeteoStatistiques();
 	~AfficheurMeteoStatistiques();
@@ -21,11 +22,11 @@ class AfficheurMeteoStatistiques: Afficheur, Connection{
 	void mettreAJourConnection(BaseDeDonnees* donnees);
 	
 	//DRY
-	void statistiquesMoyennes();
+	void statistiquesMoyennes(float tempMoyenneAnnuelle, float vitesseVentsMoyenAnnuelle, float visibiliteMoyenneAnnuelle) const;
 	
 	private:
 	// Archives meteos precedents par composition
-	Meteo donneesDerniereAnnee_* [365];
+	Meteo* donneesDerniereAnnee_ [365];
 	unsigned int nbDonnees_;
 	float tempMoyenneAnnuelle_,vitesseVentsMoyenAnnuelle_,visibiliteMoyenneAnnuelle_;
 };

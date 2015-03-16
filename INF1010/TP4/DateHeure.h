@@ -4,7 +4,7 @@
 #include <ctime>
 #include "BaseDeDonnees.h"
 
-class DateHeure:BaseDeDonnees{
+class DateHeure: public BaseDeDonnees{
 	
 	public:
 	
@@ -20,11 +20,20 @@ class DateHeure:BaseDeDonnees{
 	int getMois() 			const;
 	int getAnnee() 			const;
 	
+	void setHeure(int heure);
+	void setMinute(int minute);
+	void setSeconde(int seconde);
+	void setJourMois(int jourMois);
+	void setJourSemaine(int jourSemaine);
+	void setMois(int mois);
+	void setAnnee(int annee);
+	
 	// Redef de mise a jour
 	void mettreAJourDonnees();
 	
-	private:
+	void mettreAJourConnections();
 	
+	private:
 	// Attributs
 	unsigned heure_, minute_, seconde_, jourMois_, jourSemaine_, mois_, annee_;
 

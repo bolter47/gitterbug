@@ -35,6 +35,29 @@
 		return annee_;
 	}
 	
+	//Méthodes de modification des attributs
+	void DateHeure :: setHeure(int heure){
+		heure_ = heure;
+	}
+	void DateHeure :: setMinute(int minute){
+		minute_ = minute;
+	}
+	void DateHeure :: setSeconde(int seconde){
+		seconde_ = seconde;
+	}
+	void DateHeure :: setJourMois(int jourMois){
+		jourMois_ = jourMois;
+	}
+	void DateHeure :: setJourSemaine(int jourSemaine){
+		jourSemaine_ = jourSemaine;
+	}
+	void DateHeure :: setMois(int mois){
+		mois_ = mois;
+	}
+	void DateHeure :: setAnnee(int annee){
+		annee_ = annee;
+	}
+	
 	// Redef de mise a jour
 void DateHeure::mettreAJourDonnees(){
 	time_t raw;
@@ -51,5 +74,5 @@ void DateHeure::mettreAJourDonnees(){
 	annee_ = timeInfo->tm_year;
 	jourSemaine_ = timeInfo->tm_wday;
 	
-	mettreAJourConnections(this);
+	mettreAJourConnections();
 }

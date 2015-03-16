@@ -4,7 +4,7 @@ AFFICHEURS = AfficheurMeteoStatistiques.o AfficheurDateHeure.o AfficheurMeteo.o
 
 all: Main
 
-Main: Main.o SiteMeteo.o
+Main: Main.o SiteMeteo.o $(BASE) $(AFFICHEURS)
 	g++ $^ -o $@ $(CFLAGS)
 
 %.o: %.cpp %.h

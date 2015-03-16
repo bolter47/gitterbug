@@ -26,6 +26,16 @@ using namespace std;
 	float Meteo::getVisibilite() const{
 		return visibilite_;
 	}
+	
+	void Meteo::setTemperature(float temperature){
+		temperature_ = temperature;
+	}
+	void Meteo::setVent(float vent){
+		vent_ = vent;
+	}
+	void Meteo::setVisibilite(float visibilite){
+		visibilite_ = visibilite;
+	}
 
 	// Redef de mise a jour
 	void Meteo::mettreAJourDonnees(){

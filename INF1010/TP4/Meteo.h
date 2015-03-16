@@ -3,7 +3,7 @@
 
 #include "BaseDeDonnees.h"
 
-class Meteo:BaseDeDonnees{
+class Meteo:public BaseDeDonnees{
 	
 	public:
 	
@@ -17,6 +17,10 @@ class Meteo:BaseDeDonnees{
 	float getTemperature() const;
 	float getVent() const;
 	float getVisibilite() const;
+	
+	void setTemperature(float temperature);
+	void setVent(float vent);
+	void setVisibilite(float visibilite);
 	
 	// Redef de mise a jour
 	void mettreAJourDonnees();

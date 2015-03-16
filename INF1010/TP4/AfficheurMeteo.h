@@ -7,7 +7,7 @@
 #include <iostream>
 #include <string>
 
-class AfficheurMeteo: Afficheur, Connection{
+class AfficheurMeteo: public Afficheur, Connection{
 	public:
 	
 	// Redef methodes d'afficheage

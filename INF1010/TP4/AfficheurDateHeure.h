@@ -13,7 +13,7 @@ const string MOIS_STRING_FR[] = { "Janvier", "Fevrier", "Mars", "Avril", "Mai", 
 const string JOUR_STRING_EN[] = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 const string MOIS_STRING_EN[] = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 
-class AfficheurDateHeure: Afficheur, Connection{
+class AfficheurDateHeure: public Afficheur, Connection{
 	
 	public:
 	
