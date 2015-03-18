@@ -3,6 +3,7 @@
 
 #include <list>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -27,19 +28,21 @@ class Panier{
 	 **********************************/
 	
 	void ajouter(T nouvelElement){
-		// Implementation
+		liste_.push_back(nouvelElement);
 	};
 	
-	// Pas sûr si le const est une bonne idée ici, dépend des fct inclus
+	// Pas sûr si le const est une bonne idée ici, dépend des fct inclus, il se peut que nous devons assurer l'ordre
 	T obtenirPlusPetitElement() const{
-		//Implementation
+		return *min_element(liste_.begin(), liste.end());
 	};
 	T obtenirPlusGrandElement() const{
-		//Implementation
+		return *max_element(liste_.begin(), liste.end());
 	};
 	
 	void supprimer(unsigned int id){
 		//Implementation
+		liste<t>::iterator it = find_if(liste_.begin(), liste_.end(), estID)
+		liste_.erase(it);
 	};
 	
 	template<typename Pred>
