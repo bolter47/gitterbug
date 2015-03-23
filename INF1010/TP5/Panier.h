@@ -24,7 +24,7 @@ public :
 	// param etant l'objet dont on getID pour comparer avec refID
 	bool operator() (OBJ param)
 	{
-		return (refID_ == param.getID());
+		return (refID_ == param -> getID());
 	};
 
 private :
@@ -36,7 +36,7 @@ class afficheurContenu{
 	public:
 	void operator() (OBJ param)
 	{
-		cout << param << endl;
+		cout << *param << endl;
 	};
 };
 
@@ -66,16 +66,16 @@ class Panier{
 	 * Manip de la liste
 	 **********************************/
 	
-	void ajouter(T nouvelElement){
+	void ajouter(T* nouvelElement){
 		liste_.push_back(nouvelElement);
 	};
 	
-	// Pas sûr si le const est une bonne idée ici, dépend des fct inclus, il se peut que nous devons assurer l'ordre
+	// MAX et MIN NE RISQUENT PAS DE FONCTIONNER BECAUSE POINTERS DAMNIT
 	T obtenirPlusPetitElement() const{
-		return *min_element(liste_.begin(), liste_.end());
+		return **min_element(liste_.begin(), liste_.end());
 	};
 	T obtenirPlusGrandElement() const{
-		return *max_element(liste_.begin(), liste_.end());
+		return **max_element(liste_.begin(), liste_.end());
 	};
 	
 	void supprimer(unsigned int id){
@@ -99,12 +99,14 @@ class Panier{
 		return out;
 	};
 	
-	private:
 	/******************************
 	 * Attributs
 	 ******************************/
+	private:
 	unsigned int id_;
-	list<T> liste_;
+	
+	protected:
+	list<T*> liste_;
 };
 
 
