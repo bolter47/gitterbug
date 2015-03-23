@@ -1,17 +1,36 @@
-#include "article.h"
+#include "Article.h"
 
+//constructeur et destructeur
+Article::Article(unsigned int id, string nom, float prix): id_(id), nom_(nom), prix_(prix){
+	};
 
-bool Article:: operator<(const float prix) const{
+Article::~Article(){
+	};
+
+// Accesseurs
+unsigned int Article::getID() const {
+	return id_; 
+};
+string Article::getNom() const { 
+	return nom_; 
+};
+float Article::getPrix()const { 
+	return prix_; 
+};
+
+// Redefs d'opérateurs
+bool Article::operator<(const float prix) const{
 	return (prix_ < prix);
 };
 
 ostream& operator<<(ostream& out, const Article&  article) {
 	out << article.id_ << ' ' << article.nom_ << ' ' << article.prix_ << endl;
+	return out;
 };
 
-void Article::operator=(const Article article){
+Article& Article::operator=(const Article& article){
 	id_ = article.getID();
 	nom_ = article.getNom();
 	prix_ = article.getPrix();
-
+	return *this;
 }
