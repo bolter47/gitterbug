@@ -7,7 +7,7 @@
 using namespace std;
 
 /*********************************************
- * DEFINITION DU FONCTEUR D'ADDITION
+ * DEFINITION DES FONCTEURS
  * ******************************************/
  class AdditionElement{
 	 public:
@@ -19,6 +19,15 @@ using namespace std;
 	 
 	 private:
 	 float* total_;
+ };
+ 
+ class compPrix{
+	 public:
+	 compPrix(){};
+	 
+	 bool operator()(Article* art1, Article* art2){
+		 return art1 -> getPrix() >= art2 -> getPrix();
+	 }
  };
 
 /*********************************************
@@ -32,7 +41,7 @@ class PanierArticle:Panier<Article> {
 	float obtenirMoyenne() const;
 	
 	// Méthodes de triage
-	list<Article> trier() const;
+	list<Article*> trier() const;
 	
 	// Méthodes d'afficheage
 	friend ostream& operator<<(ostream& out, const PanierArticle& in);

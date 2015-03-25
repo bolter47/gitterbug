@@ -12,7 +12,12 @@
 	}
 	
 	// Méthodes de triage
-	list<Article> PanierArticle::trier() const{
+	list<Article*> PanierArticle::trier() const{
+		// On se créer une copie de la liste
+		list<Article*> listeRetour;
+		copy(liste_.begin(), liste_.end(), listeRetour.begin());
+		listeRetour.sort();
+		return listeRetour;
 	}
 	
 	// Méthodes d'afficheage
