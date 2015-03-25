@@ -7,7 +7,10 @@
 	Client::~Client(){
 	};
 		
-	// Accesseurs
+	/****************************
+	 *  Accesseurs pour chq attribut
+	 * *************************/
+	 
 	unsigned int Client::getID() const {
 		return id_; 
 	};
@@ -24,10 +27,15 @@
 		return solde_;
 	};
 	
-	// Redefs d'operateurs
-	bool Client::operator<(const string nom) const{
-		//TODO: faire la comparaison
-		return(nom_ < nom);
+	/****************************
+	 *  Redefs d'operateurs
+	 * operator< : vérifie la première lettre du nom de chq client
+	 * operator<<: sort tous les infos d'un client sur une ligne
+	 * operator= : retour vrai si chaque attribut est égale entre 2 clients
+	 * *************************/
+	 
+	bool Client::operator<(const Client& dude) const{	
+		return(nom_[0] < dude.getNom()[0]);
 	};
 	
 	ostream& operator<<(ostream& out, const Client& client) {
@@ -43,7 +51,11 @@
 		return *this;
 	};
 	
-	// Modification de valeurs
+	/****************************
+	 *  Modif de valeurs
+	 * diminuerSolde: réduit le solde du client d'une valeur quelconque
+	 * *************************/
+	 
 	void Client::diminuerSolde(float somme){
 		solde_ -= somme;
 	};

@@ -17,7 +17,7 @@ public:
 	string getPrenom() const;
 	float getSolde() const;
 	//Redefs d'operateurs
-	bool operator <( string nom ) const;
+	bool operator <( const Client& dude ) const;
 	friend ostream& operator<<(ostream& out, const Client& client);
 	Client& operator=(const Client& client);
 	//modifieurs

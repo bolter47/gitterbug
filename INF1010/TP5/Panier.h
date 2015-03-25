@@ -10,8 +10,8 @@ using namespace std;
 
 /*************************************
  * FONCTEURS UNAIRES
- * pour ID
- * pour afficher
+ * estID: Compare si le ID de l'article passé en paramètre est la même que l'ID enregistre
+ * afficheurContenu: Fais un cout de l'objet passé en paramètre à l'aide de l'operator<<
  * ***********************************/
  
 template <typename OBJ>
@@ -24,8 +24,8 @@ public :
 	// param etant l'objet dont on getID pour comparer avec refID
 	bool operator() (OBJ param)
 	{
-		return (refID_ == param -> getID());
-	};
+		return (refID_ == param.getID());
+	}
 
 private :
 	int refID_;
@@ -36,9 +36,11 @@ class afficheurContenu{
 	public:
 	void operator() (OBJ param)
 	{
-		cout << *param << endl;
+		cout << param << endl;
 	};
 };
+
+
 
 /*************************************
  * CLASSE PANIER
@@ -66,16 +68,16 @@ class Panier{
 	 * Manip de la liste
 	 **********************************/
 	
-	void ajouter(T* nouvelElement){
+	void ajouter(T nouvelElement){
 		liste_.push_back(nouvelElement);
 	};
 	
 	// MAX et MIN NE RISQUENT PAS DE FONCTIONNER BECAUSE POINTERS DAMNIT
 	T obtenirPlusPetitElement() const{
-		return **min_element(liste_.begin(), liste_.end());
+		return *min_element(liste_.begin(), liste_.end());
 	};
 	T obtenirPlusGrandElement() const{
-		return **max_element(liste_.begin(), liste_.end());
+		return *max_element(liste_.begin(), liste_.end());
 	};
 	
 	void supprimer(unsigned int id){
@@ -93,7 +95,7 @@ class Panier{
 	/******************************
 	 * Surcharge d'opperateurs
 	 ******************************/
-	 template<typename OBJ>
+	template<typename OBJ>
 	friend ostream& operator<<( ostream& out, Panier<OBJ>& panier){
 		copy(panier.liste_.begin(), panier.liste_.end(), ostream_iterator<OBJ>(out, "\n"));
 		return out;
@@ -106,7 +108,7 @@ class Panier{
 	unsigned int id_;
 	
 	protected:
-	list<T*> liste_;
+	list<T> liste_;
 };
 
 

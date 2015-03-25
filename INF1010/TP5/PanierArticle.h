@@ -9,25 +9,26 @@ using namespace std;
 /*********************************************
  * DEFINITION DES FONCTEURS
  * ******************************************/
+ 
+ /*****************************************
+  * Foncteur: additionElement
+  * Ajoute le prix d'un article passé par l'opérateur()
+  * à un float pointé par paramètre lors de la construction.
+  * **************************************/
  class AdditionElement{
 	 public:
+	 
+	 // Constructeur qui prend un pointeur vers un float
 	 AdditionElement(float* total): total_(total){};
 	 
-	 void operator()(Article* article){
-		 *total_ += article->getPrix();
+	 
+	 void operator()(Article article){
+		 *total_ += article.getPrix();
 	 }
 	 
 	 private:
+	 // Pointeur vers le float qui se fait incrémenté
 	 float* total_;
- };
- 
- class compPrix{
-	 public:
-	 compPrix(){};
-	 
-	 bool operator()(Article* art1, Article* art2){
-		 return art1 -> getPrix() >= art2 -> getPrix();
-	 }
  };
 
 /*********************************************
@@ -41,10 +42,13 @@ class PanierArticle:Panier<Article> {
 	float obtenirMoyenne() const;
 	
 	// Méthodes de triage
-	list<Article*> trier() const;
+	list<Article> trier() const;
 	
 	// Méthodes d'afficheage
 	friend ostream& operator<<(ostream& out, const PanierArticle& in);
+	
+	// Méthodes pour comparer paniers
+	bool operator<(const PanierArticle& panier) const;
 };
 
 #endif

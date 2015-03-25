@@ -15,7 +15,7 @@ public:
 	unsigned int getID() const;
 	string getNom() const;
 	float getPrix()const;
-	bool operator<(float Prix) const;
+	bool operator<(const Article& item) const;
 	friend ostream& operator<<(ostream& out, const Article& article);
 	//modifieurs
 	Article& operator=(const Article& article);

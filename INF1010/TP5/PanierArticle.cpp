@@ -3,6 +3,7 @@
 	// Méthodes calcul de valeur
 	float PanierArticle::sommeArticles() const{
 		float* n;
+		*n = 0;
 		for_each(liste_.begin(), liste_.end(), AdditionElement(n));
 		return *n;
 	}
@@ -12,12 +13,17 @@
 	}
 	
 	// Méthodes de triage
-	list<Article*> PanierArticle::trier() const{
+	list<Article> PanierArticle::trier() const{
 		// On se créer une copie de la liste
-		list<Article*> listeRetour;
+		list<Article> listeRetour;
 		copy(liste_.begin(), liste_.end(), listeRetour.begin());
+		// boucle qui trie tans et aussi longtemps qu'un déplacement à eut lieu
 		listeRetour.sort();
 		return listeRetour;
+	}
+	
+	bool PanierArticle::operator<(const PanierArticle& panier) const{
+		return obtenirMoyenne() < panier.obtenirMoyenne();
 	}
 	
 	// Méthodes d'afficheage

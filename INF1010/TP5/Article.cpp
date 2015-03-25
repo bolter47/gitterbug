@@ -19,8 +19,8 @@ float Article::getPrix()const {
 };
 
 // Redefs d'opérateurs
-bool Article::operator<(const float prix) const{
-	return (prix_ < prix);
+bool Article::operator<(const Article& item) const{
+	return (prix_ < item.getPrix());
 };
 
 ostream& operator<<(ostream& out, const Article&  article) {
