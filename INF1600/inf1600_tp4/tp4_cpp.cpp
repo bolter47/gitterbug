@@ -8,15 +8,16 @@
 #include "Cercle.hpp"
 #include "Texte.hpp"
 #include "Couleurs.h"
+#include <iostream>
 
 /* Fonction à appeler à la fin de faireDessin */
 void ecrireFrame(const Canevas* c);
 
 
-Cercle* nouveauCercle(Coord centre, unsigned int rayon, unsigned int couleur) {
+/*Cercle* nouveauCercle(Coord centre, unsigned int rayon, unsigned int couleur) {
 	Cercle* nouveau = new Cercle(centre, rayon, couleur); // dont forget to explicitly call the constructor in assemble + the new operator
 	return nouveau; // A modifier
-}
+}*/
 
 void faireDessin(Forme** formes, unsigned int n) {
 	Canevas canevas(LARGEUR_CANEVAS, HAUTEUR_CANEVAS, COULEUR_CANEVAS);
