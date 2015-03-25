@@ -47,7 +47,7 @@ void Canevas::dessinerForme(Forme *forme)
 	}
 }*/
 
-void Canevas::assignerPixel(Coord coord, unsigned int couleur)
+/*void Canevas::assignerPixel(Coord coord, unsigned int couleur)
 {
 	assignerPixel(coord.x, coord.y, couleur);
-}
+}*/

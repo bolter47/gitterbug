@@ -64,3 +64,22 @@ elseFin:
 	movl %ebp, %esp
 	popl %ebp
 	ret
+
+.global _ZN7Canevas13assignerPixelE5Coordj
+
+_ZN7Canevas13assignerPixelE5Coordj:
+	push %ebp
+	mov %esp, %ebp
+
+	pushl 20(%ebp)	# couleur
+	pushl 16(%ebp)	# coord.y
+	pushl 12(%ebp)	# coord.x
+	pushl 8(%ebp)	# this
+
+	call _ZN7Canevas13assignerPixelEiij
+
+	movl %ebp, %esp
+	popl %ebp
+	ret
+	
+	
