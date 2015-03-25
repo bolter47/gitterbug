@@ -29,3 +29,38 @@ _Z13nouveauCercle5Coordjj:
 	movl %ebp, %esp
 	popl %ebp
 	ret
+
+.global  _ZN7Canevas13assignerPixelEiij
+
+_ZN7Canevas13assignerPixelEiij:
+	push %ebp
+	mov %esp, %ebp
+	
+	mov 8(%ebp), %ecx 		#ecx = this 
+	
+	cmpl $0, 12(%ebp) 
+	jb elseFin			# x < 0
+
+	movl 4(%ecx), %edx
+	cmpl %edx, 12(%ebp)
+	ja elseFin			# x > this->w_
+
+	cmpl $0, 16(%ebp)
+	jb elseFin			# y < 0
+	
+	movl 8(%ecx), %edx
+	cmpl %edx, 16(%ebp)
+	ja elseFin			# y > this->h_
+	
+	movl 16(%ebp), %eax		# eax = y
+	mull 4(%ecx)	   		# eax = y * this->w_
+	addl 12(%ebp), %eax		# eax = eax + x => y * this->w_ + x
+	
+	movl 0(%ecx), %ecx		# ecx = this->canevas_[]
+	movl 20(%ebp), %edx		# edx = couleur
+	movl %edx, (%ecx, %eax, 4)	# this->canevas_[y * this->w_ + x] = couleur
+	
+elseFin:
+	movl %ebp, %esp
+	popl %ebp
+	ret
