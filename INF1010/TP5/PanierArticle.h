@@ -22,8 +22,8 @@ using namespace std;
 	 AdditionElement(float* total): total_(total){};
 	 
 	 
-	 void operator()(Article article){
-		 *total_ += article.getPrix();
+	 void operator()(Article* article){
+		 *total_ += article -> getPrix();
 	 }
 	 
 	 private:
@@ -34,7 +34,7 @@ using namespace std;
 /*********************************************
  * DEFINITION DE LA CLASSE PANIERARTICLE
  * ******************************************/
-class PanierArticle:Panier<Article> {
+class PanierArticle:public Panier<Article> {
 	public:
 	
 	// Méthodes calcul de valeur
@@ -42,7 +42,7 @@ class PanierArticle:Panier<Article> {
 	float obtenirMoyenne() const;
 	
 	// Méthodes de triage
-	list<Article> trier() const;
+	list<Article*> trier() const;
 	
 	// Méthodes d'afficheage
 	friend ostream& operator<<(ostream& out, const PanierArticle& in);

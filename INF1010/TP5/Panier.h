@@ -12,6 +12,7 @@ using namespace std;
  * FONCTEURS UNAIRES
  * estID: Compare si le ID de l'article passé en paramètre est la même que l'ID enregistre
  * afficheurContenu: Fais un cout de l'objet passé en paramètre à l'aide de l'operator<<
+ * comparaison: Vŕifier si l'élément pointé par param1 < élément pointé par param2
  * ***********************************/
  
 template <typename OBJ>
@@ -24,7 +25,7 @@ public :
 	// param etant l'objet dont on getID pour comparer avec refID
 	bool operator() (OBJ param)
 	{
-		return (refID_ == param.getID());
+		return (refID_ == param->getID());
 	}
 
 private :
@@ -36,10 +37,18 @@ class afficheurContenu{
 	public:
 	void operator() (OBJ param)
 	{
-		cout << param << endl;
-	};
+		// déréférencie param avant de le passer par cout
+		cout << *param << endl;
+	}
 };
 
+template <typename OBJ>
+class comparaison{
+	public:
+	bool operator() (OBJ param1, OBJ param2){
+		return *param1 < *param2;
+	}
+};
 
 
 /*************************************
@@ -68,21 +77,21 @@ class Panier{
 	 * Manip de la liste
 	 **********************************/
 	
-	void ajouter(T nouvelElement){
+	void ajouter(T* nouvelElement){
 		liste_.push_back(nouvelElement);
 	};
 	
 	// MAX et MIN NE RISQUENT PAS DE FONCTIONNER BECAUSE POINTERS DAMNIT
 	T obtenirPlusPetitElement() const{
-		return *min_element(liste_.begin(), liste_.end());
+		return **min_element(liste_.begin(), liste_.end(), comparaison<T*>());
 	};
 	T obtenirPlusGrandElement() const{
-		return *max_element(liste_.begin(), liste_.end());
+		return **max_element(liste_.begin(), liste_.end(), comparaison<T*>());
 	};
 	
 	void supprimer(unsigned int id){
-		estID<T> pred(id);
-		typename list<T>::iterator it = find_if(liste_.begin(), liste_.end(), pred);
+		estID<T*> pred(id);
+		typename list<T*>::iterator it = find_if(liste_.begin(), liste_.end(), pred);
 		if (it != liste_.end() || pred(*liste_.end()))
 			liste_.erase(it);
 	};
@@ -108,7 +117,7 @@ class Panier{
 	unsigned int id_;
 	
 	protected:
-	list<T> liste_;
+	list<T*> liste_;
 };
 
 

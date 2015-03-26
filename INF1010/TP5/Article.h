@@ -17,6 +17,7 @@ public:
 	float getPrix()const;
 	bool operator<(const Article& item) const;
 	friend ostream& operator<<(ostream& out, const Article& article);
+	friend ostream& operator<<(ostream& out, const Article* articlePointeur);
 	//modifieurs
 	Article& operator=(const Article& article);
 private:

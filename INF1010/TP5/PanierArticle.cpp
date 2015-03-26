@@ -13,12 +13,12 @@
 	}
 	
 	// Méthodes de triage
-	list<Article> PanierArticle::trier() const{
+	list<Article*> PanierArticle::trier() const{
 		// On se créer une copie de la liste
-		list<Article> listeRetour;
+		list<Article*> listeRetour;
 		copy(liste_.begin(), liste_.end(), listeRetour.begin());
 		// boucle qui trie tans et aussi longtemps qu'un déplacement à eut lieu
-		listeRetour.sort();
+		listeRetour.sort(comparaison<Article*>());
 		return listeRetour;
 	}
 	
