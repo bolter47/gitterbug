@@ -29,5 +29,7 @@
 	// Méthodes d'afficheage
 	ostream& operator<<(ostream& out, const PanierArticle& in){
 		// TODO : FIX THIS SHIT
-		return out << static_cast<Panier<Article>>(in);
+		const Panier<Article> base(in);
+		
+		return out << base;
 	}

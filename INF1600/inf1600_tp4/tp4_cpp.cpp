@@ -30,9 +30,9 @@ void faireDessin(Forme** formes, unsigned int n) {
 }
 
 
-void desallouerForme(Forme* forme) {
+/*void desallouerForme(Forme* forme) {
 	delete forme; // dont forget to explicitly call the destructor in assembly
-}
+}*/
 
 void Canevas::dessinerForme(Forme *forme)
 {
