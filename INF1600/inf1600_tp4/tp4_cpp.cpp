@@ -39,15 +39,15 @@ void Canevas::dessinerForme(Forme *forme)
 	forme->dessiner(this);
 }
 
-void Canevas::assignerPixel(int x, int y, unsigned int couleur)
+/*void Canevas::assignerPixel(int x, int y, unsigned int couleur)
 {
 	if(x > 0 && x < (int)this->_w && y > 0 && y < (int)this->_h)
 	{
 		this->_canevas[y * this->_w + x] = couleur;
 	}
-}
+}*/
 
-void Canevas::assignerPixel(Coord coord, unsigned int couleur)
+/*void Canevas::assignerPixel(Coord coord, unsigned int couleur)
 {
 	assignerPixel(coord.x, coord.y, couleur);
-}
+}*/
