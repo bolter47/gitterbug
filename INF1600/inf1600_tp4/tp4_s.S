@@ -92,9 +92,10 @@ _Z15desallouerFormeP5Forme:
 	call _ZN5FormeD1Ev	# appel destructeur
 
 	pushl 8(%ebp)		# remet le pointeur sur le stack
-	_ZdlPv			# delete
+	call _ZdlPv		# delete
 
 	addl $8, %esp		# depile
 
+	popl %ebp
 	ret
 	
