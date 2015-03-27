@@ -95,7 +95,8 @@ _Z15desallouerFormeP5Forme:
 	call _ZdlPv		# delete
 
 	addl $8, %esp		# depile
-
+	
+movl %ebp, %esp
 	popl %ebp
 	ret
 	
@@ -111,8 +112,7 @@ _ZN7Canevas13dessinerFormeEP5Forme:
 	movl 12(%ebp), %ecx	# forme
 	push %ecx		# this de la mthd virt, forme
 	movl (%ecx), %ecx	# on se met en table virtuelle
-	#addl $4, %ecx
-	call *(%ecx)		# appel la seconde fonction virtuelle
+	call *8(%ecx)		# appel la seconde fonction virtuelle
 	
 	addl $8, %esp		# on depile apres l'appel
 	
