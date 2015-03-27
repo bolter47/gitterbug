@@ -99,3 +99,24 @@ _Z15desallouerFormeP5Forme:
 	popl %ebp
 	ret
 	
+.global _ZN7Canevas13dessinerFormeEP5Forme
+
+_ZN7Canevas13dessinerFormeEP5Forme:
+	push %ebp
+	mov %esp, %ebp
+	
+	movl 8(%ebp), %eax 	# this
+	push %eax		# on place this comme 1erParam sur le stack
+	
+	movl 12(%ebp), %ecx	# forme
+	push %ecx		# this de la mthd virt, forme
+	movl (%ecx), %ecx	# on se met en table virtuelle
+	#addl $4, %ecx
+	call *(%ecx)		# appel la seconde fonction virtuelle
+	
+	addl $8, %esp		# on depile apres l'appel
+	
+	movl %ebp, %esp
+	popl %ebp
+	ret
+	

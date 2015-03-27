@@ -34,10 +34,10 @@ void faireDessin(Forme** formes, unsigned int n) {
 	delete forme; // dont forget to explicitly call the destructor in assembly
 }*/
 
-void Canevas::dessinerForme(Forme *forme)
+/*void Canevas::dessinerForme(Forme *forme)
 {
 	forme->dessiner(this);
-}
+}*/
 
 /*void Canevas::assignerPixel(int x, int y, unsigned int couleur)
 {
