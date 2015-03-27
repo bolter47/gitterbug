@@ -19,7 +19,7 @@ void ecrireFrame(const Canevas* c);
 	return nouveau; // A modifier
 }*/
 
-void faireDessin(Forme** formes, unsigned int n) {
+/*void faireDessin(Forme** formes, unsigned int n) {
 	Canevas canevas(LARGEUR_CANEVAS, HAUTEUR_CANEVAS, COULEUR_CANEVAS);
 	for (unsigned int i = 0; i < n; i++)
 	{
@@ -27,7 +27,7 @@ void faireDessin(Forme** formes, unsigned int n) {
 	}
 
 	ecrireFrame(&canevas);
-}
+}*/
 
 
 /*void desallouerForme(Forme* forme) {

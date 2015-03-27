@@ -26,8 +26,7 @@ _Z13nouveauCercle5Coordjj:
 	movl -4(%ebp), %eax
 	
 	add $0x4, (%esp)
-	movl %ebp, %esp
-	popl %ebp
+	leave
 	ret
 
 .global  _ZN7Canevas13assignerPixelEiij
@@ -61,8 +60,7 @@ _ZN7Canevas13assignerPixelEiij:
 	movl %edx, (%ecx, %eax, 4)	# this->canevas_[y * this->w_ + x] = couleur
 	
 elseFin:
-	movl %ebp, %esp
-	popl %ebp
+	leave
 	ret
 
 .global _ZN7Canevas13assignerPixelE5Coordj
@@ -78,8 +76,7 @@ _ZN7Canevas13assignerPixelE5Coordj:
 
 	call _ZN7Canevas13assignerPixelEiij
 
-	movl %ebp, %esp
-	popl %ebp
+	leave
 	ret
 	
 .global _Z15desallouerFormeP5Forme
@@ -96,8 +93,7 @@ _Z15desallouerFormeP5Forme:
 
 	addl $8, %esp		# depile
 	
-movl %ebp, %esp
-	popl %ebp
+	leave
 	ret
 	
 .global _ZN7Canevas13dessinerFormeEP5Forme
@@ -116,7 +112,59 @@ _ZN7Canevas13dessinerFormeEP5Forme:
 	
 	addl $8, %esp		# on depile apres l'appel
 	
-	movl %ebp, %esp
-	popl %ebp
+	
+	leave
 	ret
 	
+.global _Z11faireDessinPP5Formej
+
+_Z11faireDessinPP5Formej:
+	push %ebp
+	mov %esp, %ebp
+	
+	subl $8, %esp		# On fait de la place pour Canevas
+	
+	push $COULEUR_CANEVAS	
+	push $HAUTEUR_CANEVAS
+	push $LARGEUR_CANEVAS
+	pushl $12		# sizeof(Canevas)
+	call _Znwj		# call operateur new
+	mov %eax, -8(%ebp) 	# on range le pointeur canevas
+	
+	push $COULEUR_CANEVAS	# On le passe au construct
+	push $HAUTEUR_CANEVAS
+	push $LARGEUR_CANEVAS
+	push %eax		
+	call _ZN7CanevasC1Ejjj	# call constructeur
+	addl $16, %esp	 	# depilage
+	
+	# On initialise notre boucle
+	
+	movl $0, -4(%ebp)	# initialise i
+	
+	
+	loopDessin:
+	
+	movl 12(%ebp), %eax	# on place n dans eax
+	movl -4(%ebp), %ecx	# on place i dans ecx
+	cmp %ecx, %eax		# on verifie cond acces avec n - i de la boucle
+	jbe finDessin		
+	
+	movl 8(%ebp), %eax	# on place le pointeur du tableau de formes
+	pushl (%eax, %ecx, 4)	# on range le pointeur forme comme 1er param
+	pushl -8(%ebp)		# addr du canevas comme this
+	call _ZN7Canevas13dessinerFormeEP5Forme
+	addl $8, %esp		# on depile le stack
+	
+	incl -4(%ebp)		# incremente i
+	
+	jmp loopDessin	
+	
+	finDessin:
+
+	push -8(%ebp)		# push l`addr de canevas
+	call _Z11ecrireFramePK7Canevas
+	addl $4, %esp		# on depile
+	
+	leave
+	ret
