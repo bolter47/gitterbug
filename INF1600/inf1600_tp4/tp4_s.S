@@ -5,27 +5,27 @@
 _Z13nouveauCercle5Coordjj:
 	push %ebp
 	mov %esp, %ebp
-	sub $0x4, %esp # allocate 4 bytes for local variable
+	sub $0x4, %esp			# aloue 4 bytes pour variable locale
 	
-	pushl $32	# sizeof(Cercle)
-	call _Znwj	# call operateur new
-	mov %eax, -4(%ebp) # nouveau =
+	pushl $32			# sizeof(Cercle)
+	call _Znwj			# call operateur new
+	mov %eax, -4(%ebp) 		# nouveau =
 	
-	add $0x4, (%esp) # pop esp
+	add $0x4, (%esp) 		# pop esp
 
-	pushl 20(%ebp)	# couleur
-	pushl 16(%ebp)	# rayon
-	pushl 12(%ebp)	# centre.y
-	pushl 8(%ebp)	# centre.x
-	pushl -4(%ebp)	# this = nouveau
+	pushl 20(%ebp)			# couleur
+	pushl 16(%ebp)			# rayon
+	pushl 12(%ebp)			# centre.y
+	pushl 8(%ebp)			# centre.x
+	pushl -4(%ebp)			# this = nouveau
 	call _ZN6CercleC1E5Coordjj	# call du constructeur
-	addl $20, %esp	# pop this, centre.x, centre.y, rayon, couleur
+	addl $20, %esp			# pop this, centre.x, centre.y, rayon, couleur
 
 	# nouveau = new Cercle(centre, rayon, couleur)
 	
-	movl -4(%ebp), %eax
+	movl -4(%ebp), %eax		# retorune ptr nouveau cercle
 	
-	add $0x4, (%esp)
+	add $0x4, %esp
 	leave
 	ret
 
@@ -132,7 +132,7 @@ _Z11faireDessinPP5Formej:
 	mov %eax, -8(%ebp) 	# on range le pointeur canevas
 	
 	push $COULEUR_CANEVAS	# On le passe au construct
-	push $HAUTEUR_CANEVAS
+	push $HAUTEUR_CANEVAS	
 	push $LARGEUR_CANEVAS
 	push %eax		
 	call _ZN7CanevasC1Ejjj	# call constructeur
@@ -143,7 +143,7 @@ _Z11faireDessinPP5Formej:
 	movl $0, -4(%ebp)	# initialise i
 	
 	
-	loopDessin:
+loopDessin:
 	
 	movl 12(%ebp), %eax	# on place n dans eax
 	movl -4(%ebp), %ecx	# on place i dans ecx
@@ -160,11 +160,22 @@ _Z11faireDessinPP5Formej:
 	
 	jmp loopDessin	
 	
-	finDessin:
+finDessin:
+
+	#destruction des variables globales
 
 	push -8(%ebp)		# push l`addr de canevas
 	call _Z11ecrireFramePK7Canevas
 	addl $4, %esp		# on depile
+
+	# supression
+	pushl -8(%ebp) 		# pointeur sur le stack
+	call _ZN7CanevasD1Ev	# appel destructeur
+
+	pushl -8(%ebp)		# remet le pointeur sur le stack
+	call _ZdlPv		# delete
+
+	addl $8, %esp		# depile les deux addresses
 	
 	leave
 	ret
