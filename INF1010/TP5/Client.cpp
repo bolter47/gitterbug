@@ -31,11 +31,11 @@
 	 *  Redefs d'operateurs
 	 * operator< : vérifie la première lettre du nom de chq client
 	 * operator<<: sort tous les infos d'un client sur une ligne
-	 * operator= : retour vrai si chaque attribut est égale entre 2 clients
+	 * operator= : retourne un client avec les mêmes attributs que celui à droite de l'operande
 	 * *************************/
 	 
 	bool Client::operator<(const Client& dude) const{	
-		return(nom_[0] < dude.getNom()[0]);
+		return(id_ < dude.getID());
 	};
 	
 	ostream& operator<<(ostream& out, const Client& client) {

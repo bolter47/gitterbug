@@ -1,9 +1,5 @@
+
 #include "Commerce.h"
-#include "Client.h"
-#include "Panier.h"
-#include "Article.h"
-#include <map>
-#include <iostream>
 
 using namespace std;
 
@@ -26,6 +22,7 @@ bool Commerce::ajouterArticle(Client client, Article* article)
 		return false;
 	}
 	else{
+		// FAUT PAS OUBLIER D'IMPLEMENTER ÇA!
 		mapClientPanier_.operator[]()
 	}
 }

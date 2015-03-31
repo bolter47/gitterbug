@@ -2,8 +2,7 @@
 	
 	// Méthodes calcul de valeur
 	float PanierArticle::sommeArticles() const{
-		float* n;
-		*n = 0;
+		float* n = new float(0.f);
 		for_each(liste_.begin(), liste_.end(), AdditionElement(n));
 		return *n;
 	}
@@ -29,7 +28,7 @@
 	// Méthodes d'afficheage
 	ostream& operator<<(ostream& out, const PanierArticle& in){
 		// TODO : FIX THIS SHIT
-		const Panier<Article> base(in);
+		static_cast<Panier<Article>>(in);
 		
-		return out << base;
+		return out << in;
 	}
