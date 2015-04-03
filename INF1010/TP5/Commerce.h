@@ -4,29 +4,51 @@
 #include "Client.h"
 #include "Panier.h"
 #include "Article.h"
+#include "PanierArticle.h"
 #include <map>
 #include <iostream>
 
 
 using namespace std;
 
+
+class foncteurAffichagePanier{
+	public:
+		foncteurAffichagePanier();
+		void operator()(PanierArticle* panier)
+		{
+			cout << *panier;
+		}
+};
+
+class foncteurRabais{
+	public:
+		foncteurRabais(float rabais);
+		void operator()(PanierArticle* panier)
+		{
+			((panier->sommeArticles) * (pourcentageRabais_ / 100));
+		}
+	private:
+		float pourcentageRabais_;
+};
+
 class Commerce 
 {
 	public:
-		bool ajouterCommande(Client client, Panier<Article>* panier); // Panier<?Article?> à confirmer!
+		bool estPresent(Client client);
+		bool ajouterCommande(Client client, PanierArticle* panier);
 		bool ajouterArticle(Client client, Article* article);
-		void supprimerCommande(Client client);	// Le bon type des fonctions ci-dessous à venir (je les change au fur et a mesure que j'implemente)
-		void supprimerArticleCommande(Client client, Panier<Article>* panier);
-		void appliquerRabais(Client client, Foncteur* foncteur); //Foncteur pas encore fait On va le mettre comme ca pour pas oublier de le changer
-		void payerPanier(Client client, float montantArgent);
-		void afficher(Client client)	const; //Affiche panier d'un client
-		void afficher(string nomClient)	const; //Affiche le panier d'un client selon son nom
-		void afficherParOrdreAlphabetique()	const; //Affiche les panniers selon l'ordre alphabetique des clients. (Classement dans la map par clés)
+		bool supprimerCommande(Client client);
+		bool supprimerArticleCommande(Client client, Article* article);
+		void appliquerRabais(Client client, foncteurRabais());
+		void afficher(Client client);
+		void afficher(unsigned int idClient);
+		void afficherParOrdreAlphabetique()	const;
 		void afficherParPrixMoyenDecroissant()	const;
 
 	private:
-		map<Client, Panier<Article>*> mapClientPanier_;
-		typedef map<Client, Panier<Article>*> ::const_iterator IterateurConst;
+		map<unsigned int, PanierArticle*> mapClientPanier_;
+		typedef map<unsigned int, PanierArticle*> ::const_iterator IterateurConst;
 };
 
 #endif
