@@ -14,7 +14,7 @@ using namespace std;
 
 class foncteurAffichagePanier{
 	public:
-		foncteurAffichagePanier();
+		foncteurAffichagePanier(){};
 		void operator()(pair<unsigned int, PanierArticle*> duo)
 		{
 			cout << duo.second;

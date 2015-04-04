@@ -1,4 +1,5 @@
 #include "Commerce.h"
+#include "Client.h"
 
 using namespace std;
 
