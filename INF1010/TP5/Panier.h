@@ -11,8 +11,14 @@ using namespace std;
 /*************************************
  * FONCTEURS UNAIRES
  * estID: Compare si le ID de l'article passé en paramètre est la même que l'ID enregistre
- * afficheurContenu: Fais un cout de l'objet passé en paramètre à l'aide de l'operator<<
- * comparaison: Vŕifier si l'élément pointé par param1 < élément pointé par param2
+ * 
+ * afficheurContenu: prend un pointeur ostream en paramètre lors de construction 
+ * et out << de l'objet passé en paramètre à operator()
+ * 
+ * afficheurArticle: comme afficheurContenu, mais prend un ostream en paramètre lors de construction;
+ * 
+ * FONCTEURS BINAIRES
+ * comparaison: Vérifie si l'élément pointé par param1 < élément pointé par param2
  * ***********************************/
  
 template <typename OBJ>
@@ -33,21 +39,25 @@ private :
 };
 
 template <typename OBJ>
-class afficheurContenu{
-	public:
-	void operator() (OBJ param)
-	{
-		// déréférencie param avant de le passer par cout
-		cout << *param << endl;
-	}
-};
-
-template <typename OBJ>
 class comparaison{
 	public:
 	bool operator() (OBJ param1, OBJ param2){
 		return *param1 < *param2;
 	}
+};
+
+template <typename OBJ>
+class afficheurContenu{
+	public:
+	afficheurContenu(ostream* out):out_(out){}
+	
+	void operator() (OBJ param){
+		cout << "afficheurContenu appele" << endl;
+		*out_ << *param << endl;
+	}
+	
+	private:
+	ostream* out_;
 };
 
 
@@ -88,7 +98,7 @@ class Panier{
 		return **max_element(liste_.begin(), liste_.end(), comparaison<T*>());
 	};
 	
-	void supprimer(int id){
+	void supprimer(unsigned int id){
 		estID<T*> pred(id);
 		typename list<T*>::iterator it = find_if(liste_.begin(), liste_.end(), pred);
 		if (it != liste_.end() || pred(*liste_.end())){
@@ -97,10 +107,17 @@ class Panier{
 		}
 	};
 	
-	//template typename<Pred>
-	//void supprimer(Pred pred){
-	//	remove_if(liste_.begin(), liste_.end(), pred);
-	//};
+	template <typename Pred>
+	void supprimer(Pred pred){
+		typename list<T*>::iterator it = liste_.begin();
+		while (it != liste_.end()){
+			it = find_if(liste_.begin(), liste_.end(), pred);
+			if (it != liste_.end()){
+				delete *it;
+				liste_.erase(it);
+			}
+		}
+	};
 	
 	/******************************
 	 * Surcharge d'opperateurs
@@ -109,7 +126,7 @@ class Panier{
 	friend ostream& operator<<( ostream& out, Panier<OBJ>& panier){
 		out << "==============================================" << endl
 		<< "Contenu du panier #" << panier.getID() << endl;
-		copy(panier.liste_.begin(), panier.liste_.end(), ostream_iterator<OBJ*>(out, "\n"));
+		for_each(panier.liste_.begin(), panier.liste_.end(), afficheurContenu<OBJ*>(&out));
 		out << "==============================================" << endl;
 		return out;
 	};

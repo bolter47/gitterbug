@@ -1,11 +1,11 @@
-CFLAGS = -Wall -c -std=c++11
+CFLAGS=-Wall -std=c++11
 
 %.o: %.cpp %.h
-	g++ -o $@ $(CFLAGS) $< 
+	g++ -o $@ -c $< $(CFLAGS)
 
 all: main
 
-main: main.o PanierArticle.o Article.o Commerce.o Client.o
+main: main.o PanierArticle.o Article.o Commerce.o Client.o Panier.h
 	g++ -Wall $^ -o $@
 
 PanierArticle.o : Panier.h PanierArticle.h Article.h

@@ -24,9 +24,9 @@ class foncteurAffichagePanier{
 class foncteurRabais{
 	public:
 		foncteurRabais(float rabais):pourcentageRabais_(rabais){};
-		void operator()(Client* clientEastwood)
+		void operator()(Client &clientEastwood)
 		{
-			clientEastwood->diminuerSolde(clientEastwood->getSolde() * (pourcentageRabais_ / 100));
+			clientEastwood.diminuerSolde(clientEastwood.getSolde() * (pourcentageRabais_ / 100));
 		}
 	private:
 		float pourcentageRabais_;
@@ -35,13 +35,13 @@ class foncteurRabais{
 class Commerce 
 {
 	public:
-		bool estPresent(Client client);
-		bool ajouterCommande(Client client, PanierArticle* panier);
-		bool ajouterArticle(Client client, Article* article);
-		bool supprimerCommande(Client client);
-		bool supprimerArticleCommande(Client client, Article* article);
-		void appliquerRabais(Client client, foncteurRabais fonct);
-		void afficher(Client client);
+		bool estPresent(Client &client);
+		bool ajouterCommande(Client &client, PanierArticle* panier);
+		bool ajouterArticle(Client &client, Article* article);
+		bool supprimerCommande(Client &client);
+		bool supprimerArticleCommande(Client &client, Article* article);
+		void appliquerRabais(Client &client, foncteurRabais fonct);
+		void afficher(Client &client);
 		void afficher(unsigned int idClient);
 		void afficherParOrdreAlphabetique()	const;
 		void afficherParPrixMoyenDecroissant()	const;

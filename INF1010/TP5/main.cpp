@@ -7,6 +7,14 @@
 
 using namespace std;
 
+class foncteurPrixZero{
+	public:
+	foncteurPrixZero(){};
+	bool operator()(Article* article){
+		return article -> getPrix() == 0;
+	}
+};
+
 int main() {
 	
 	// 1) Créer une classe PanierArticle avec un id quelconque.
@@ -46,57 +54,70 @@ int main() {
     
 	// 5) Supprimer l'article avec id = 2.
 	cout << "Supprimer l'article avec id = 2..." << endl << endl << endl;
-	panier1.supprimer(2);
+	unsigned int val = 2;
+	panier1.supprimer(val);
 	
 
     
 	// 6) Supprimer les articles qui ont un prix == 0. Créer un foncteur FoncteurPrixZero
 	// et le passer en paramètre dans la méthode supprimer.
 	cout << "Supprimer les articles avec un prix = 0..." << endl << endl;
-
+	foncteurPrixZero foncteurSuppr;
+	panier1.supprimer<foncteurPrixZero>(foncteurSuppr);
     
 	// 7) Afficher de nouveau le panier
 	cout << "Afficher de nouveau le panier..." << endl;
+	cout << panier1;
 
     
 	// 8) Appeller la fonction trier du panier et afficher la liste d'article obtenue avec
 	// la fonction for_each.
 	cout << "Trier le panier" << endl;
+	list<Article*> listeTest = panier1.trier();
+	cout << "Debut listeTest : " << *listeTest.begin() << endl << "Fin listeTest : " << *listeTest.end() << endl;
 	cout << "=============================" << endl;
-    // ...
+    // procède au for_each en utilisant afficheurContenu
+    for_each(listeTest.begin(), listeTest.end(), afficheurContenu<Article*>(&cout));
 	cout << "=============================" << endl << endl << endl;
 
     
 	// 9) Créer un nouveau panier avec id = 2.
-
+	PanierArticle panier2(2);
     
 	// 10) Ajouter les articles suivants dans ce panier:
 	// Article 1 -> id = 1, nom = Livre, prix = 32.73$ (reprendre celui créer plus haut)
 	// Article 6 -> id = 6, nom = Laptop, prix = 400.0$
-
+	panier2.ajouter(article1);
+	Article* article6 = new Article(6, "Laptop", 400.f);
+	panier2.ajouter(article6);
 
 	// 11) Créer les clients suivants:
 	// Client 1 -> id = 1, nom = Doe, prenom = John
 	// Client 2 -> id = 2, nom = Tremblay, prenom = Martin
+	Client johnDoe(1, "Doe", "John", 0.f);
+	Client martinTremblay(2, "Tremblay", "Martin", 0.f);
 
 
 	cout << "*********** COMMERCE ***********" << endl;
 	// 12) Créer un commerce et ajouter deux commandes
 	// Commande 1 -> John Doe avec panier 1
 	// Commande 2 -> Martin Tremblay avec panier 2
+	Commerce magasin;
+	magasin.ajouterCommande(johnDoe, &panier1);
+	magasin.ajouterCommande(martinTremblay, &panier2);
 
 
 	// 13) Afficher les commandes par ordre alphabétique
 	cout << "************* Affichage alphabetique ****************" << endl;
-
+	magasin.afficherParOrdreAlphabetique();
 
 	// 14) Afficher les commandes en ordre décroissant par le prix moyen des panier
 	cout << "************* Affichage prix moyen decroissant **************" << endl;
-
+	magasin.afficherParPrixMoyenDecroissant();
 
 	// 15) Appliquer 10% de rabais sur le panier de Martin. 
+	magasin.appliquerRabais(martinTremblay, foncteurRabais(10));
 	cout << "*********** Affichage apres modifications ***********" << endl;
-
 
 	// 16) Créer l'article suivant:
 	// Article 7 -> id = 7, nom = "Bureau", prix = 200

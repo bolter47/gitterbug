@@ -1,9 +1,8 @@
 #include "Commerce.h"
-#include "Client.h"
 
 using namespace std;
 
-bool Commerce::estPresent(Client client)
+bool Commerce::estPresent(Client &client)
 {
 	bool estClientPresent = false;
 	unsigned int idClient = client.getID();
@@ -15,7 +14,7 @@ bool Commerce::estPresent(Client client)
 	return estClientPresent;
 }
 
-bool Commerce::ajouterCommande(Client client, PanierArticle* panier)
+bool Commerce::ajouterCommande(Client &client, PanierArticle* panier)
 {
 	bool succes = false;
 	if (estPresent(client))
@@ -26,7 +25,7 @@ bool Commerce::ajouterCommande(Client client, PanierArticle* panier)
 	return succes;
 }
 
-bool Commerce::ajouterArticle(Client client, Article* article)
+bool Commerce::ajouterArticle(Client &client, Article* article)
 {
 	bool succes = false;
 	if (estPresent(client))
@@ -38,7 +37,7 @@ bool Commerce::ajouterArticle(Client client, Article* article)
 	return succes;
 }
 
-bool Commerce::supprimerCommande(Client client)
+bool Commerce::supprimerCommande(Client &client)
 {
 	bool succes = false;
 	if (estPresent(client))
@@ -50,7 +49,7 @@ bool Commerce::supprimerCommande(Client client)
 	return succes;
 }
 
-bool Commerce::supprimerArticleCommande(Client client, Article* article)
+bool Commerce::supprimerArticleCommande(Client &client, Article* article)
 {
 	bool succes = false;
 	if (estPresent(client))
@@ -62,16 +61,12 @@ bool Commerce::supprimerArticleCommande(Client client, Article* article)
 	return succes;
 }
 
-/*foncteurRabais::foncteurRabais(float rabais) : pourcentageRabais_(rabais){
-};
-
-void Commerce:: appliquerRabais(Client client, float rabais, foncteurRabais(float rabais))
+void Commerce:: appliquerRabais(Client &client, foncteurRabais rabaisseur)
 {
-	PanierArticle* panier = mapClientPanier_[client.getID()];
-	foncteurRabais(rabais);
-}*/
+	rabaisseur(client);
+}
 
-void Commerce::afficher(Client client) 
+void Commerce::afficher(Client &client) 
 {
 	PanierArticle* panier = mapClientPanier_[client.getID()];
 	cout << *panier;
@@ -79,8 +74,7 @@ void Commerce::afficher(Client client)
 
 void Commerce::afficher(unsigned int idClient)
 {
-	PanierArticle* panier = mapClientPanier_[idClient];
-	cout << *panier;
+	cout << *mapClientPanier_[idClient];
 }
 
 void Commerce::afficherParOrdreAlphabetique() const

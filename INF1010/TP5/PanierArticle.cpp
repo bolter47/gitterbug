@@ -18,9 +18,10 @@
 	// Méthodes de triage
 	list<Article*> PanierArticle::trier() const{
 		// On se créer une copie de la liste
+		cout << "Debut liste : " << *liste_.begin() << endl << "Fin liste : " << *liste_.end() << endl;
 		list<Article*> listeRetour;
 		copy(liste_.begin(), liste_.end(), listeRetour.begin());
-		// boucle qui trie tans et aussi longtemps qu'un déplacement à eut lieu
+		cout << "Debut listeRet : " << *listeRetour.begin() << endl << "Fin listeRet : " << *listeRetour.end() << endl;
 		listeRetour.sort(comparaison<Article*>());
 		return listeRetour;
 	}
