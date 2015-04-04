@@ -81,7 +81,6 @@ class Panier{
 		liste_.push_back(nouvelElement);
 	};
 	
-	// MAX et MIN NE RISQUENT PAS DE FONCTIONNER BECAUSE POINTERS DAMNIT
 	T obtenirPlusPetitElement() const{
 		return **min_element(liste_.begin(), liste_.end(), comparaison<T*>());
 	};
@@ -89,24 +88,29 @@ class Panier{
 		return **max_element(liste_.begin(), liste_.end(), comparaison<T*>());
 	};
 	
-	void supprimer(unsigned int id){
+	void supprimer(int id){
 		estID<T*> pred(id);
 		typename list<T*>::iterator it = find_if(liste_.begin(), liste_.end(), pred);
-		if (it != liste_.end() || pred(*liste_.end()))
+		if (it != liste_.end() || pred(*liste_.end())){
+			delete *it;
 			liste_.erase(it);
+		}
 	};
 	
-	template<typename Pred>
-	void supprimer(Pred pred){
-		remove_if(liste_.begin(), liste_.end(), pred);
-	};
+	//template typename<Pred>
+	//void supprimer(Pred pred){
+	//	remove_if(liste_.begin(), liste_.end(), pred);
+	//};
 	
 	/******************************
 	 * Surcharge d'opperateurs
 	 ******************************/
 	template<typename OBJ>
 	friend ostream& operator<<( ostream& out, Panier<OBJ>& panier){
-		copy(panier.liste_.begin(), panier.liste_.end(), ostream_iterator<OBJ>(out, "\n"));
+		out << "==============================================" << endl
+		<< "Contenu du panier #" << panier.getID() << endl;
+		copy(panier.liste_.begin(), panier.liste_.end(), ostream_iterator<OBJ*>(out, "\n"));
+		out << "==============================================" << endl;
 		return out;
 	};
 	

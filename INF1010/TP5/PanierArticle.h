@@ -36,6 +36,8 @@ using namespace std;
  * ******************************************/
 class PanierArticle:public Panier<Article> {
 	public:
+	//Constructeur
+	PanierArticle(unsigned int id);
 	
 	// Méthodes calcul de valeur
 	float sommeArticles() const;

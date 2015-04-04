@@ -15,18 +15,18 @@ using namespace std;
 class foncteurAffichagePanier{
 	public:
 		foncteurAffichagePanier();
-		void operator()(PanierArticle* panier)
+		void operator()(pair<unsigned int, PanierArticle*> duo)
 		{
-			cout << *panier;
+			cout << duo.second;
 		}
 };
 
 class foncteurRabais{
 	public:
-		foncteurRabais(float rabais);
-		void operator()(PanierArticle* panier)
+		foncteurRabais(float rabais):pourcentageRabais_(rabais){};
+		void operator()(Client* clientEastwood)
 		{
-			((panier->sommeArticles) * (pourcentageRabais_ / 100));
+			clientEastwood->diminuerSolde(clientEastwood->getSolde() * (pourcentageRabais_ / 100));
 		}
 	private:
 		float pourcentageRabais_;
@@ -40,7 +40,7 @@ class Commerce
 		bool ajouterArticle(Client client, Article* article);
 		bool supprimerCommande(Client client);
 		bool supprimerArticleCommande(Client client, Article* article);
-		void appliquerRabais(Client client, foncteurRabais());
+		void appliquerRabais(Client client, foncteurRabais fonct);
 		void afficher(Client client);
 		void afficher(unsigned int idClient);
 		void afficherParOrdreAlphabetique()	const;
@@ -48,7 +48,7 @@ class Commerce
 
 	private:
 		map<unsigned int, PanierArticle*> mapClientPanier_;
-		typedef map<unsigned int, PanierArticle*> ::const_iterator IterateurConst;
+		typedef map<unsigned int, PanierArticle*>::const_iterator IterateurConst;
 };
 
 #endif

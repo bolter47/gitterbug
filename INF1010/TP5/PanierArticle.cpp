@@ -1,4 +1,8 @@
 #include "PanierArticle.h"
+
+	// Constructeur
+	PanierArticle::PanierArticle(unsigned int id):Panier<Article>(id){
+	}
 	
 	// Méthodes calcul de valeur
 	float PanierArticle::sommeArticles() const{
@@ -27,8 +31,7 @@
 	
 	// Méthodes d'afficheage
 	ostream& operator<<(ostream& out, const PanierArticle& in){
-		// TODO : FIX THIS SHIT
-		static_cast<Panier<Article>>(in);
-		
-		return out << in;
+		Panier<Article> baseIn = static_cast< Panier<Article> >(in);
+		out << baseIn;
+		return out;
 	}

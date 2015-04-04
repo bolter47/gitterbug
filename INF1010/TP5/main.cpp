@@ -1,15 +1,16 @@
 
 #include <vector>
 #include <iostream>
-#include "Foncteur.h"
-#include "PanierArticles.h"
+#include <iomanip>
+#include "PanierArticle.h"
 #include "Commerce.h"
 
 using namespace std;
 
 int main() {
+	
 	// 1) Créer une classe PanierArticle avec un id quelconque.
-
+	PanierArticle panier1(1001);
     
 	// 2) Ajouter les articles suivants dans le panier
 	// Article 1 -> id = 1, nom = Livre, prix = 32.73$
@@ -17,19 +18,36 @@ int main() {
 	// Article 3 -> id = 3, nom = Accessoire, prix = 12.12$
 	// Article 4 -> id = 4, nom = Article bizarre, prix = 0.0$
 	// Article 5 -> id = 5, nom = Mauvais article, prix = 0.0$
+	Article* article1 = new Article(1, "Livre", 32.73);
+	panier1.ajouter(article1);
+	Article* article2 = new Article(2, "Film", 34.97);
+	panier1.ajouter(article2);
+	Article* article3 = new Article(3, "Accessoire", 12.12);
+	panier1.ajouter(article3);
+	Article* article4 = new Article(4, "Article bizarre", 0.f);
+	panier1.ajouter(article4);
+	Article* article5 = new Article(5, "Mauvais article", 0.f);
+	panier1.ajouter(article5);
 
     
 	// Afficher le panier avec l'opérateur <<
+	cout << panier1;
+	
 
     
 	// 3) Afficher la moyenne des prix des articles du panier
+	cout <<"La moyenne des prix est de : " << panier1.obtenirMoyenne() << "$" << endl;
 
     
 	// 4) Afficher l'id de l'article le moins cher et l'id de l'article le plus cher
+	cout << "L'article le moins cher est le #" << panier1.obtenirPlusPetitElement().getID() << endl;
+	cout << "L'article le plus cher est le #" << panier1.obtenirPlusGrandElement().getID() << endl;
 
     
 	// 5) Supprimer l'article avec id = 2.
-	cout << "Supprimer l'article avec id = 2..." << endl << endl;
+	cout << "Supprimer l'article avec id = 2..." << endl << endl << endl;
+	panier1.supprimer(2);
+	
 
     
 	// 6) Supprimer les articles qui ont un prix == 0. Créer un foncteur FoncteurPrixZero

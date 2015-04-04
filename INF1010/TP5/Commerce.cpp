@@ -84,21 +84,21 @@ void Commerce::afficher(unsigned int idClient)
 
 void Commerce::afficherParOrdreAlphabetique() const
 {
-	for_each(mapClientPanier_.begin, mapClientPanier_.end, foncteurAffichagePanier());
+	for_each(mapClientPanier_.begin(), mapClientPanier_.end(), foncteurAffichagePanier());
 }
 
 void Commerce::afficherParPrixMoyenDecroissant() const
 {
-	map<unsigned int, PanierArticle*>::iterator pos = mapClientPanier_.begin;
+	IterateurConst pos = mapClientPanier_.begin();
 	unsigned int prixMoyen;
 	map<unsigned int, PanierArticle*> mapDesPrixMoyensCroissants;
 
-	while (pos != mapClientPanier_.end)
+	while (pos != mapClientPanier_.end())
 	{
 		PanierArticle* panier = pos->second;
-		prixMoyen = panier->obtenirMoyenne;
+		prixMoyen = panier->obtenirMoyenne();
 		mapDesPrixMoyensCroissants[prixMoyen] = panier;
 		pos++;
 	}
-	for_each(mapDesPrixMoyensCroissants.end, mapDesPrixMoyensCroissants.begin, foncteurAffichagePanier());
+	for_each(mapDesPrixMoyensCroissants.end(), mapDesPrixMoyensCroissants.begin(), foncteurAffichagePanier());
 }
