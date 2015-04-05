@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include "PanierArticle.h"
 #include "Commerce.h"
 
@@ -56,8 +57,6 @@ int main() {
 	cout << "Supprimer l'article avec id = 2..." << endl << endl << endl;
 	unsigned int val = 2;
 	panier1.supprimer(val);
-	
-
     
 	// 6) Supprimer les articles qui ont un prix == 0. Créer un foncteur FoncteurPrixZero
 	// et le passer en paramètre dans la méthode supprimer.
@@ -74,7 +73,6 @@ int main() {
 	// la fonction for_each.
 	cout << "Trier le panier" << endl;
 	list<Article*> listeTest = panier1.trier();
-	cout << "Debut listeTest : " << *listeTest.begin() << endl << "Fin listeTest : " << *listeTest.end() << endl;
 	cout << "=============================" << endl;
     // procède au for_each en utilisant afficheurContenu
     for_each(listeTest.begin(), listeTest.end(), afficheurContenu<Article*>(&cout));
@@ -117,27 +115,34 @@ int main() {
 
 	// 15) Appliquer 10% de rabais sur le panier de Martin. 
 	magasin.appliquerRabais(martinTremblay, foncteurRabais(10));
-	cout << "*********** Affichage apres modifications ***********" << endl;
 
 	// 16) Créer l'article suivant:
 	// Article 7 -> id = 7, nom = "Bureau", prix = 200
-
+	Article* article7 = new Article(7, "Bureau", 200.f);
 
 	// 17) Ajouter l'article 7 au panier de John
-
+	magasin.ajouterArticle(johnDoe, article7);
 
 	// 18) Supprimer l'article 3 de John
+	magasin.supprimerArticleCommande(johnDoe, article3);
 
-
+	cout << "*********** Affichage apres Modifications ***********" << endl;
 	// 19) Afficher les commandes en ordre décroissant par le prix moyen des panier
-
+	magasin.afficherParPrixMoyenDecroissant();
 
 	// 20) Supprimer la commande de Martin et afficher les commandes en ordre alphabétique
+	magasin.supprimerCommande(martinTremblay);
 	cout << "******** Affichage apres suppression commande ************" << endl;
-
+	magasin.afficherParOrdreAlphabetique();
 
 	// 21) Libérer la mémoire (si nécessaire)
-
+	delete article1;
+	delete article2;
+	delete article3;
+	delete article4;
+	delete article5;
+	delete article6;
+	delete article7;
 
 	return 0;
 }

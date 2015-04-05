@@ -18,10 +18,8 @@
 	// Méthodes de triage
 	list<Article*> PanierArticle::trier() const{
 		// On se créer une copie de la liste
-		cout << "Debut liste : " << *liste_.begin() << endl << "Fin liste : " << *liste_.end() << endl;
 		list<Article*> listeRetour;
-		copy(liste_.begin(), liste_.end(), listeRetour.begin());
-		cout << "Debut listeRet : " << *listeRetour.begin() << endl << "Fin listeRet : " << *listeRetour.end() << endl;
+		listeRetour = liste_;
 		listeRetour.sort(comparaison<Article*>());
 		return listeRetour;
 	}
@@ -33,6 +31,8 @@
 	// Méthodes d'afficheage
 	ostream& operator<<(ostream& out, const PanierArticle& in){
 		Panier<Article> baseIn = static_cast< Panier<Article> >(in);
-		out << baseIn;
+		out << baseIn << "PRIX MOYEN : " << in.obtenirMoyenne() << endl
+		<< "PRIX TOTAL : " << in.sommeArticles() << endl
+		<< "==============================================" << endl;
 		return out;
 	}

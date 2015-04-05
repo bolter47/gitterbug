@@ -17,7 +17,7 @@ class foncteurAffichagePanier{
 		foncteurAffichagePanier(){};
 		void operator()(pair<unsigned int, PanierArticle*> duo)
 		{
-			cout << duo.second;
+			cout << *duo.second;
 		}
 };
 
@@ -32,6 +32,18 @@ class foncteurRabais{
 		float pourcentageRabais_;
 };
 
+template<typename TypeClef, typename TypeList>
+class foncteurPopulerListeParMap{
+	public:
+	foncteurPopulerListeParMap(list<TypeList>* liste):liste_(liste){};
+	void operator()(pair<TypeClef, TypeList> duo)
+		{
+			liste_ -> push_back(duo.second);
+		}
+	private:
+	list<TypeList>* liste_;
+};
+
 class Commerce 
 {
 	public:
@@ -41,7 +53,7 @@ class Commerce
 		bool supprimerCommande(Client &client);
 		bool supprimerArticleCommande(Client &client, Article* article);
 		void appliquerRabais(Client &client, foncteurRabais fonct);
-		void afficher(Client &client);
+		void afficher(const Client &client);
 		void afficher(unsigned int idClient);
 		void afficherParOrdreAlphabetique()	const;
 		void afficherParPrixMoyenDecroissant()	const;

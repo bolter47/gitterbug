@@ -42,7 +42,8 @@ template <typename OBJ>
 class comparaison{
 	public:
 	bool operator() (OBJ param1, OBJ param2){
-		return *param1 < *param2;
+		// On inverse ici car la fonction trier veut ordre décroissant
+		return !(*param1 < *param2);
 	}
 };
 
@@ -52,8 +53,7 @@ class afficheurContenu{
 	afficheurContenu(ostream* out):out_(out){}
 	
 	void operator() (OBJ param){
-		cout << "afficheurContenu appele" << endl;
-		*out_ << *param << endl;
+		*out_ << *param;
 	}
 	
 	private:
@@ -102,7 +102,6 @@ class Panier{
 		estID<T*> pred(id);
 		typename list<T*>::iterator it = find_if(liste_.begin(), liste_.end(), pred);
 		if (it != liste_.end() || pred(*liste_.end())){
-			delete *it;
 			liste_.erase(it);
 		}
 	};
@@ -113,7 +112,6 @@ class Panier{
 		while (it != liste_.end()){
 			it = find_if(liste_.begin(), liste_.end(), pred);
 			if (it != liste_.end()){
-				delete *it;
 				liste_.erase(it);
 			}
 		}
@@ -125,7 +123,8 @@ class Panier{
 	template<typename OBJ>
 	friend ostream& operator<<( ostream& out, Panier<OBJ>& panier){
 		out << "==============================================" << endl
-		<< "Contenu du panier #" << panier.getID() << endl;
+		<< "Contenu du panier #" << panier.getID() << endl
+		<< "==============================================" << endl;
 		for_each(panier.liste_.begin(), panier.liste_.end(), afficheurContenu<OBJ*>(&out));
 		out << "==============================================" << endl;
 		return out;

@@ -24,7 +24,7 @@ bool Article::operator<(const Article& item) const{
 }
 
 ostream& operator<<(ostream& out, const Article&  article) {
-	out << "Article #" << article.id_ << " : " << article.nom_ << ", " << article.prix_ << "$";
+	out << "Article #" << article.id_ << " : " << article.nom_ << ", " << article.prix_ << "$" << endl;
 	// Pas besoin de endl, le ostream_iterator s'en charge
 	return out;
 }
