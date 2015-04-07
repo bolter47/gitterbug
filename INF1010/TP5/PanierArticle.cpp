@@ -1,3 +1,12 @@
+/********************************************************************
+ Fichier: PanierArticle.cpp
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Implémentation de la classe PanierArticle.
+	Pour l'implémentation des foncteurs, voir Panier.h ou PanierArticle.h
+********************************************************************/
+
 #include "PanierArticle.h"
 
 /* * * * * * * * *

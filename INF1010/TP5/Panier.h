@@ -1,3 +1,14 @@
+/********************************************************************
+ Fichier: Panier.h
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Fichier entête et implémentation d'une classe générique représentant un panier.
+	Un panier peut se faire ajouter ou supprimer des éléments. 
+	Son contenu se trouve dans l'attribut liste_.
+	Plusieurs foncteurs de cette classe sont recyclés ailleurs.
+********************************************************************/
+
 #ifndef PANIER_H
 #define PANIER_H
 

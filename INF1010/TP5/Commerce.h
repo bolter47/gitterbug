@@ -1,3 +1,12 @@
+/********************************************************************
+ Fichier: Commerce.h
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Fichier entête du commerce qui se charge d'associer chaque client présent à un panier d'articles.
+	Ces associations se retrouvent dans la map mapClientPanier_.
+	Commerce peut se voir ajouter et supprimer des commandes ou des articles d'une commande.
+********************************************************************/
 #ifndef COMMERCE_H
 #define COMMERCE_H
 

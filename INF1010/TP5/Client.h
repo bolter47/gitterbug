@@ -1,3 +1,11 @@
+/********************************************************************
+ Fichier: Client.h
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Fichier entête simple définissant le client. Contient le solde de ses achats.
+********************************************************************/
+
 #ifndef CLIENT_H
 #define CLIENT_H
 

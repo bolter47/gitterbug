@@ -1,3 +1,12 @@
+/********************************************************************
+ Fichier: Commerce.cpp
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Implémentation de la classe Commerce.
+	Pour les foncteurs, voir Panier.h, PanierArticle.h ou Commerce.h
+********************************************************************/
+
 #include "Commerce.h"
 
 using namespace std;

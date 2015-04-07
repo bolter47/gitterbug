@@ -1,3 +1,10 @@
+/********************************************************************
+ Fichier: main.cpp
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Implémentation de l'éxécution principal du programme.
+********************************************************************/
 
 #include <vector>
 #include <iostream>

@@ -1,3 +1,11 @@
+/********************************************************************
+ Fichier: Client.cpp
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Implémentation de la classe client.
+********************************************************************/
+
 #include "Client.h"
 
 //constructeur et destructeur

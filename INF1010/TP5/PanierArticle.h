@@ -1,3 +1,12 @@
+/********************************************************************
+ Fichier: PanierArticle.h
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Fichier entête du panier d'articles, une classe dérivée de Panier avec un type définit Article.
+	Peut trier son contenu, en calculer la somme et la moyenne.
+********************************************************************/
+
 #ifndef PANIER_ARTICLE_H
 #define PANIER_ARTICLE_H
 

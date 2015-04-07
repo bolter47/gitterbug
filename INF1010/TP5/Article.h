@@ -1,3 +1,10 @@
+/********************************************************************
+ Fichier: Article.h
+ Auteur: Gendreau, Vincent, Courbariau
+ Date : Lundi 6 avril 2015
+ Description: 
+	Fichier entête simple définissant l'article.
+********************************************************************/
 #ifndef ARTICLE_H
 #define ARTICLE_H
 
