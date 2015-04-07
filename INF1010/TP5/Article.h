@@ -5,20 +5,44 @@
 #include <iostream>
 using namespace std;
 
+/* * * * * * * * * *
+* Classe Article
+* * * * * * * * * */
+
 class Article{
 public:
-	//constructeur
+
+	/* * * * * * * * *
+	* Constructeur
+	* * * * * * * * */
 	Article(unsigned int id, string nom, float prix);
-	//destructeur
+
+	/* * * * * * * * *
+	* Destructeur
+	* * * * * * * * */
 	~Article();
-	//accesseurs
+
+	/* * * * * * * * *
+	* Accesseurs
+	* * * * * * * * */
 	unsigned int getID() const;
 	string getNom() const;
 	float getPrix()const;
+
+	/* * * * * * * * * * * * * * *
+	* Redefinition d'opétateurs
+	* * * * * * * * * * * * * * */
 	bool operator<(const Article& item) const;
 	friend ostream& operator<<(ostream& out, const Article& article);
-	//modifieurs
+
+	/* * * * * * * *
+	* Modificateurs
+	* * * * * * * */
 	Article& operator=(const Article& article);
+
+	/* * * * * * * * * * *
+	* Attributs privés
+	* * * * * * * * * * */
 private:
 	unsigned int id_;
 	string nom_;

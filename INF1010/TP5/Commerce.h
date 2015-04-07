@@ -11,6 +11,11 @@
 
 using namespace std;
 
+/*
+* Foncteur qui se charge d'afficher un panier
+* à partir d'une pair d'unsigned int et un 
+* pointeur vers un PanierArticle
+*/
 
 class foncteurAffichagePanier{
 	public:
@@ -20,6 +25,11 @@ class foncteurAffichagePanier{
 			cout << *duo.second;
 		}
 };
+
+/*
+* Foncteur qui applique un rabais transmis par
+* paramètre à un solde d'un client
+*/
 
 class foncteurRabais{
 	public:
@@ -31,6 +41,11 @@ class foncteurRabais{
 	private:
 		float pourcentageRabais_;
 };
+
+/*
+* Foncteur qui se charge de remplir une
+* liste à partir d'une map
+*/
 
 template<typename TypeClef, typename TypeList>
 class foncteurPopulerListeParMap{
@@ -44,8 +59,15 @@ class foncteurPopulerListeParMap{
 	list<TypeList>* liste_;
 };
 
+/*
+* Contenu de la classe Commerce
+*/
+
 class Commerce 
 {
+	/*
+	* Méthodes publiques
+	*/
 	public:
 		bool estPresent(Client &client);
 		bool ajouterCommande(Client &client, PanierArticle* panier);
@@ -58,6 +80,9 @@ class Commerce
 		void afficherParOrdreAlphabetique()	const;
 		void afficherParPrixMoyenDecroissant()	const;
 
+	/*
+	* Attributs privés
+	*/
 	private:
 		map<unsigned int, PanierArticle*> mapClientPanier_;
 		typedef map<unsigned int, PanierArticle*>::const_iterator IterateurConst;

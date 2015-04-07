@@ -36,20 +36,43 @@ using namespace std;
  * ******************************************/
 class PanierArticle:public Panier<Article> {
 	public:
-	//Constructeur
+	/* * * * * * * * *
+	* Constructeur
+	* * * * * * * * */
 	PanierArticle(unsigned int id);
 	
-	// Méthodes calcul de valeur
+	/* * * * * * * * * * * * * * * * * * * * *
+	* Méthode qui calcule la somme des prix
+	* des articles d'un PanierArticle
+	* Retourne :	le montant total du
+	*				PanierArticle
+	* * * * * * * * * * * * * * * * * * * * */
 	float sommeArticles() const;
+
+	/* * * * * * * * * * * * * * * * * * * * * * * *
+	* Méthode qui calcule la moyenne des prix
+	* des articles contenus dans un PanierArticle
+	* Retourne :	le prix moyen d'un 
+	*				PanierArticle
+	* * * * * * * * * * * * * * * * * * * * * * * */
 	float obtenirMoyenne() const;
 	
-	// Méthodes de triage
+	/* * * * * * * * * *
+	* Méthode de trie
+	* * * * * * * * * */
 	list<Article*> trier() const;
 	
-	// Méthodes d'afficheage
+	/* * * * * * * * * * * * * * * * * * * * * * * *
+	* Méthode d'affichage des articles contenus
+	* dans un Panier
+	* * * * * * * * * * * * * * * * * * * * * * * */
 	friend ostream& operator<<(ostream& out, const PanierArticle& in);
 	
-	// Méthodes pour comparer paniers
+	/* * * * * * * * * * * * * * * * * * * * * *
+	* Méthode de comparaison de PanierArticle
+	* qui compare les paniers selon leur prix
+	* moyens
+	* * * * * * * * * * * * * * * * * * * * * */
 	bool operator<(const PanierArticle& panier) const;
 };
 

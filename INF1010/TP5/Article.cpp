@@ -1,13 +1,20 @@
 #include "Article.h"
 
-//constructeur et destructeur
+/* * * * * * * * *
+* Constructeur
+* * * * * * * * */
 Article::Article(unsigned int id, string nom, float prix): id_(id), nom_(nom), prix_(prix){
 	}
 
+/* * * * * * * * *
+* Destructeur
+* * * * * * * * */
 Article::~Article(){
 	}
 
-// Accesseurs
+/* * * * * * * * *
+* Accesseurs
+* * * * * * * * */
 unsigned int Article::getID() const {
 	return id_; 
 }
@@ -18,7 +25,9 @@ float Article::getPrix()const {
 	return prix_; 
 }
 
-// Redefs d'opérateurs
+/* * * * * * * * * * * * * * *
+* Redefinition d'opétateurs
+* * * * * * * * * * * * * * */
 bool Article::operator<(const Article& item) const{
 	return (prix_ < item.getPrix());
 }
@@ -29,6 +38,9 @@ ostream& operator<<(ostream& out, const Article&  article) {
 	return out;
 }
 
+/* * * * * * * *
+* Modificateurs
+* * * * * * * */
 Article& Article::operator=(const Article& article){
 	id_ = article.getID();
 	nom_ = article.getNom();

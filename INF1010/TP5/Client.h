@@ -5,23 +5,46 @@
 #include <iostream>
 using namespace std;
 
+/* * * * * * * * * *
+* Classe Client
+* * * * * * * * * */
+
 class Client{
 public:
-	//constructeur
+
+	/* * * * * * * * *
+	* Constructeur
+	* * * * * * * * */
 	Client(unsigned int id, string nom, string prenom, float solde);
-	//destructeur
+
+	/* * * * * * * *
+	* Destructeur
+	* * * * * * * */
 	~Client();
-	//accesseurs
+
+	/* * * * * * *
+	* Accesseurs
+	* * * * * * */
 	unsigned int getID() const;
 	string getNom() const;
 	string getPrenom() const;
 	float getSolde() const;
-	//Redefs d'operateurs
+
+	/* * * * * * * * * * * * * * * * *
+	* Redefinition d'opérateurs
+	* * * * * * * * * * * * * * * * */
 	bool operator <( const Client& dude ) const;
 	friend ostream& operator<<(ostream& out, const Client& client);
 	Client& operator=(const Client& client);
-	//modifieurs
+
+	/* * * * * * *
+	* Modifieurs
+	* * * * * * */
 	void diminuerSolde(float somme);
+
+	/* * * * * * * * * *
+	* Attributs privés
+	* * * * * * * * * */
 private:
 	unsigned int id_;
 	string nom_;

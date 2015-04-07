@@ -2,6 +2,13 @@
 
 using namespace std;
 
+/* * * * * * * * * * * * * * * * * * * * * * *
+* Petite méthode qui vérifie si un client se
+* trouve dans la map. (principe DRY)
+* Retourne :	vrai si le client est présent
+*				dans la map
+* * * * * * * * * * * * * * * * * * * * * * */
+
 bool Commerce::estPresent(Client &client)
 {
 	bool estClientPresent = false;
@@ -13,6 +20,14 @@ bool Commerce::estPresent(Client &client)
 	}
 	return estClientPresent;
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui ajoute une commande
+* c'est-à-dire qui ajoute un client et son
+* panier à la map.
+* Retourne :	vrai si la commande a été
+*				ajouté à la map avec succes
+* * * * * * * * * * * * * * * * * * * * * * * */
 
 bool Commerce::ajouterCommande(Client &client, PanierArticle* panier)
 {
@@ -26,6 +41,13 @@ bool Commerce::ajouterCommande(Client &client, PanierArticle* panier)
 	return succes;
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui ajoute un article
+* au panier d'un client.
+* Retourne :	vrai si l'article a été
+*				ajouté au panier avec succes
+* * * * * * * * * * * * * * * * * * * * * * */
+
 bool Commerce::ajouterArticle(Client &client, Article* article)
 {
 	bool succes = false;
@@ -36,6 +58,14 @@ bool Commerce::ajouterArticle(Client &client, Article* article)
 	}
 	return succes;
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui supprime une commande
+* c'est-à-dire qui supprime un client et son 
+* panier de la map.
+* Retourne :	vrai si la commande a été 
+*				supprimer de la map.
+* * * * * * * * * * * * * * * * * * * * * * * */
 
 bool Commerce::supprimerCommande(Client &client)
 {
@@ -48,6 +78,13 @@ bool Commerce::supprimerCommande(Client &client)
 	return succes;
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui supprime un article
+* du panier d'un client
+* Retourne :	vrai si l'article a été 
+*				supprimer de la map.
+* * * * * * * * * * * * * * * * * * * * * * */
+
 bool Commerce::supprimerArticleCommande(Client &client, Article* article)
 {
 	bool succes = false;
@@ -59,10 +96,21 @@ bool Commerce::supprimerArticleCommande(Client &client, Article* article)
 	return succes;
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui appelle le foncteur
+* qui applique le rabais sur le solde d'un
+* client.
+* * * * * * * * * * * * * * * * * * * * * * * */
+
 void Commerce:: appliquerRabais(Client &client, foncteurRabais rabaisseur)
 {
 	rabaisseur(client);
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui affiche le panier d'un
+* client. 
+* * * * * * * * * * * * * * * * * * * * * * * * */
 
 void Commerce::afficher(const Client &client) 
 {
@@ -70,15 +118,32 @@ void Commerce::afficher(const Client &client)
 	cout << *mapClientPanier_[client.getID()];
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui affiche le panier d'un
+* client à partir de son ID.
+* * * * * * * * * * * * * * * * * * * * * * * * */
+
 void Commerce::afficher(unsigned int idClient)
 {
 	cout << *mapClientPanier_[idClient];
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui affiche tous les paniers
+* de la map en ordre alphabétique (en ordre croissant
+* de le l'ID des clients de la map.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 void Commerce::afficherParOrdreAlphabetique() const
 {
 	for_each(mapClientPanier_.begin(), mapClientPanier_.end(), foncteurAffichagePanier());
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * *
+* Méthode de Commerce qui affiche tous les paniers
+* de la map en ordre décroissant de leur prix
+* moyen.
+* * * * * * * * * * * * * * * * * * * * * * * * * */
 
 void Commerce::afficherParPrixMoyenDecroissant() const
 {

@@ -1,21 +1,36 @@
 #include "PanierArticle.h"
 
-	// Constructeur
+/* * * * * * * * *
+* Constructeur
+* * * * * * * * */
 	PanierArticle::PanierArticle(unsigned int id):Panier<Article>(id){
 	}
 	
-	// Méthodes calcul de valeur
+	/* * * * * * * * * * * * * * * * * * * * *
+	* Méthode qui calcule la somme des prix
+	* des articles d'un PanierArticle
+	* Retourne :	le montant total du
+	*				PanierArticle
+	* * * * * * * * * * * * * * * * * * * * */
 	float PanierArticle::sommeArticles() const{
 		float* n = new float(0.f);
 		for_each(liste_.begin(), liste_.end(), AdditionElement(n));
 		return *n;
 	}
-	
+
+	/* * * * * * * * * * * * * * * * * * * * * * * *
+	* Méthode qui calcule la moyenne des prix
+	* des articles contenus dans un PanierArticle
+	* Retourne :	le prix moyen d'un
+	*				PanierArticle
+	* * * * * * * * * * * * * * * * * * * * * * * */
 	float PanierArticle::obtenirMoyenne() const{
 		return sommeArticles()/liste_.size();
 	}
 	
-	// Méthodes de triage
+	/* * * * * * * * * *
+	* Méthode de trie
+	* * * * * * * * * */
 	list<Article*> PanierArticle::trier() const{
 		// On se créer une copie de la liste
 		list<Article*> listeRetour;
@@ -24,11 +39,19 @@
 		return listeRetour;
 	}
 	
+	/* * * * * * * * * * * * * * * * * * * * * * * *
+	* Méthode d'affichage des articles contenus
+	* dans un Panier
+	* * * * * * * * * * * * * * * * * * * * * * * */
 	bool PanierArticle::operator<(const PanierArticle& panier) const{
 		return obtenirMoyenne() < panier.obtenirMoyenne();
 	}
 	
-	// Méthodes d'afficheage
+	/* * * * * * * * * * * * * * * * * * * * * *
+	* Méthode de comparaison de PanierArticle
+	* qui compare les paniers selon leur prix
+	* moyens
+	* * * * * * * * * * * * * * * * * * * * * */
 	ostream& operator<<(ostream& out, const PanierArticle& in){
 		Panier<Article> baseIn = static_cast< Panier<Article> >(in);
 		out << baseIn << "PRIX MOYEN : " << in.obtenirMoyenne() << endl
