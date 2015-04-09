@@ -14,7 +14,6 @@ MainWindow::MainWindow() {
 	index_ = -1;
 	range_ = 255;
 	image_label_size = QSize(3 * 160, 3 * 90);
-    setSliderRange();
 	setMenu();
  	setUI();
 	setConnection();
@@ -22,7 +21,7 @@ MainWindow::MainWindow() {
 
 // !!!!!!!!!! A FAIRE !!!!!!!!!!!!
 void MainWindow::setSliderRange() {
-    slider_ =0;
+    slider_->setValue(0);
     slider_->setRange(-255,255);
 	// Vous devez mettre le range du slider entre -255 et 255
 	// Au départ, le slider doit être initilisé à zéro
@@ -111,20 +110,20 @@ void MainWindow::setConnection() {
 	
 	// Le slot 'close()' est une méthode de la classe QMainWindow dont MainWindow derive
 	connect(exit_action_, SIGNAL(triggered()), this, SLOT(close()));
-    connect(open_action_, SIGNAL(triggered()), this, SLOT(load());
+    connect(open_action_, SIGNAL(triggered()), this, SLOT(load()));
 	// Vous devez établir les connections entre les elements de l'interface et les méthodes slots.
 	// 1. L'action 'open_action' doit être connectée au slot 'load()' en utlisant le signal 'triggered()'
 	//    cf. la class QAction
-    connect(process_combobox_,SIGNAL(currentIndexChanged(int))), this, SLOT(processImage());
+    connect(process_combobox_,SIGNAL(currentIndexChanged(int)), this, SLOT(processImage()));
 	// 2. La combobox 'process_combobox_' doit être connectée au slot 'processImage()'. 
 	//    Le signal est emit quand l'utlisateur change d'index, cf. class QComboBox
     connect(slider_, SIGNAL(valueChanged(int)), SLOT(processImage()));
 	// 3. L slider 'slider_' doit être connecté au slot 'processImage()'. 
 	//    Le signal est emit quand l'utlisateur change la valeur du slider, cf. class QSlider
-    connect(empty_button_, SIGNAL(triggered()), this, SLOT(empty()));
+    connect(empty_button_, SIGNAL(clicked()), this, SLOT(empty()));
 	// 4. Le bouton 'empty_button' doit être connecté au slot 'empty()'. 
 	//    Le signal est emis lorsque l'utilisateur clique sur le button, cf. class QButton
-    connect(list_paths_, SIGNAL(itemClicked(QListWidgetItem)), this, SLOT(setImage(QListWidgetItem*)));
+    connect(list_paths_, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(setImage(QListWidgetItem*)));
 	// 5. Le QListWidget 'list_paths_' doit être connecté au slot 'setImage(QListWidgetItem*)'. 
 	//    Le signal est emis lorsque l'utilisateur clique sur un des elements de la liste.
 	//    cf. class QListWidget et QListWidgetItem
@@ -132,14 +131,18 @@ void MainWindow::setConnection() {
 
 // !!!!!!!!!! A FAIRE !!!!!!!!!!!!
 void MainWindow::checkImageValid(const QImage &image) const {
-
+    if (image.isNull()){
+        throw ImageLoadingException("L'image que vous venez de charger est invalide");
+    }
 	// Vous devez verifier si l'image est valide, c'est à dire si elle n'est pas nulle, cf. QImage
 	// Cette fonction doit envoyer une expection de type 'ImageLoadingException'
 }
 
 // !!!!!!!!!! A FAIRE !!!!!!!!!!!!
 void MainWindow::checkImageAlreadyLoaded(const QImage &image) const {
-
+    if (images_list_.contains(image)){
+        throw ImageLoadingException("L'image se situe déja dans la liste");
+    }
 	// Vous devez verifier si l'image est déjà présente dans la liste, cf. QList
 	// Cette fonction doit envoyer une expection de type 'ImageLoadingException'
 }
@@ -175,8 +178,13 @@ void MainWindow::load() {
 	// Vous devez gérer les exceptions de type 'ImageLoadingException' générées lors de l'ouverture des images
 	// cf. méthodes addImages(), checkImageValid() et checkImageAlreadyLoaded()
 	// Si une exception est générée, il faut alors faire appel à la méthode showAlert() de 'ImageLoadingException' pour afficher l'erreur
-		
-	//	addImages();
+    try{
+        addImages();
+    }
+
+    catch (ImageLoadingException &e){
+        e.showAlert();
+    }
 }
 
 // Ne pas changer. Vide la liste d'images et de paths
@@ -215,7 +223,7 @@ void MainWindow::setImage(int index) {
 // Surcharge de 'setImage(int index)'
 void MainWindow::setImage(QListWidgetItem* item) {
 
-	// On récupère l'inde courant de QListWidget *list_paths_
+    // On récupère l'inde (Mahatma Ghandi style) courant de QListWidget *list_paths_
 	// via list_paths_->currentRow()
 	setImage(list_paths_->currentRow());
 }
@@ -224,20 +232,16 @@ void MainWindow::setImage(QListWidgetItem* item) {
 void MainWindow::processImageIntensity() {
 
     int res = process_.intensity(slider_->value(), images_list_[index_], image_process_);
-	// Vous devez vérifier si le retour de la méthode 'intensity(...)' de la classe 'ImageProcessing' est valide (== 0).
-    if(res == 0){
-
+    // Vous devez vérifier si le retour de la méthode 'intensity(...)' de la classe 'ImageProcessing' est valide (== 0).
+    if(res == 1){
+        throw ImageProcessingException("Intensité moyenne de l'image traitee est too damn high"); /*Intensité moyenne de l'image traitee est trop basse */
     }
-    else if(res == 1){
-        throw ImageProcessingException("Intensité moyenne de l'image traitee est trop haute"); /*Intensité moyenne de l'image traitee est trop haute*/
+    else if(res == -1){
+        throw ImageProcessingException("Intensité moyenne de l'image traitee est trop basse"); /*Intensité moyenne de l'image traitee est trop haute*/
     }
-    else{
-        throw ImageProcessingException("Intensité moyenne de l'image traitee est trop basse"); /*Intensité moyenne de l'image traitee est trop basse */
+    else if (res != 0){
+        throw ImageProcessingException("What the @#%$ you been smokin boy? Ton intensité moyenne est trop weird pour ce programme."); /* Intensité moyenne anormale */
     }
-	// Si ce n'est pas le cas, vous devez générer une exception de type 'ImageProcessingException'
-	// Si l'intensité moyenne de l'image traitée est trop haute, alors 'intensity(...)' retourne 1
-	// A l,inverse, si l'intensité moyenne est trop basse, la méthode retourne -1
-	// Enfin, la méthode retourne 0 si l'intensité moyenne est correcte 
 }
 
 // !!!!!!!!!! A FAIRE !!!!!!!!!!!!
@@ -249,14 +253,14 @@ void MainWindow::processImageContrast() {
 	// A l,inverse, si l'intensité moyenne est trop basse, la méthode retourne -1
 	// Enfin, la méthode retourne 0 si l'intensité moyenne est correcte 
     int res = process_.contrast(slider_->value(), images_list_[index_], image_process_);
-    if(res ==0){
-
+    if(res == 1){
+        throw ImageProcessingException("Contraste moyen de l'image traitee est too damn high"); /*Intensité moyenne de l'image traitee est trop basse */
     }
-    else if(res ==1){
-        throw ImageProcessingException("L'intensité moyenne de l'image traitée est trop haute");
+    else if(res == -1){
+        throw ImageProcessingException("Contraste moyen de l'image traitee est trop basse"); /*Intensité moyenne de l'image traitee est trop haute*/
     }
-    else{
-        throw ImageProcessingException("L'intensité moyenne est trop basse");
+    else if (res != 0){
+        throw ImageProcessingException("What the @#%$ you been smokin boy? Ton contraste moyen est trop weird pour ce programme."); /* Intensité moyenne anormale */
     }
 }
 
@@ -265,7 +269,7 @@ void MainWindow::processImageAccordingToCombobox() {
 	
 	// Si la liste est vide, on génére une exception de type 'NoImageException'.
 	if (index_ == -1)
-		throw NoImageException();
+        throw NoImageException("Arrete de retoucher une image qui existe pas!");
 
 	// Sinon on traite l'image
 	int process = process_combobox_->currentIndex();
@@ -290,16 +294,27 @@ void MainWindow::processImageAccordingToCombobox() {
 
 // !!!!!!!!!! A FAIRE !!!!!!!!!!!!
 void MainWindow::processImage() {
-
 	// Vous devez gérer les exceptions de type 'ImageProcessingException' générées lors du traitement des images, cf. méthodes processImageIntensity(), processImageContrast()
+    bool yourImageIsBadAndYouShouldFeelBad = false;
+    try {
+        processImageAccordingToCombobox();
+    }
+    catch (ImageProcessingException &e){
+        e.resetSlider(slider_);
+        yourImageIsBadAndYouShouldFeelBad = true;
+    }
+    catch (NoImageException &e){
+        e.reset(slider_, image_process_label_, process_combobox_);
+        yourImageIsBadAndYouShouldFeelBad = true;
+    }
+
 	// Si une exception est générée, il faut alors faire appel à la méthode resetSlider(...) de 'ImageProcessingException' pour remettre le slider à zero.
 	// Il faut aussi gérer l'exception 'NoImageException' générée par la méthode 'processImageAccordingToCombobox()'.
 	// Cette exception est générée si on essaie de traiter une image alors que la liste d'image est vide.
 	// Le cas échéant, il faudra ne plus afficher l'image traitée, remettre le slider et le combobox à zero en faisant appel à 'reset(...) de 'NoImageException
 	// Enfin, si aucune exception n'est levée, 'image_process_label_->setPixmap(QPixmap::fromImage(image_process_));' met à jour l'affichage du résultat du traitement
-
-	// processImageAccordingToCombobox();
 	// Update l'affichage de l'image traitée si aucune exception est n'générée
-	// image_process_label_->setPixmap(QPixmap::fromImage(image_process_));
+    if (!yourImageIsBadAndYouShouldFeelBad)
+        image_process_label_->setPixmap(QPixmap::fromImage(image_process_));
 }
 

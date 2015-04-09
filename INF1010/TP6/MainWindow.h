@@ -8,10 +8,11 @@
 #ifndef MAIN_WINDOW_H
 #define MAIN_WINDOW_H
 
-#include <QtGui>
 #include <iostream> 
-#include "ImageProcessing.h"
 #include "ImageException.h"
+#include "ImageProcessing.h"
+#include <QtGui>
+
 using namespace std;
 
 
