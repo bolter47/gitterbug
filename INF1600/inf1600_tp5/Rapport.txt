@@ -2,7 +2,7 @@ Exercice 2 :
 
 1. Comment est-il possible, sous Linux, que deux programmes exécutés en même temps et qui écrivent tous les deux à l'écran l'adresse à laquelle ils ont été chargés, affichent la même adresse?
 
-
+	Sous linux, une table virtuelle de pages est déléguée à chacun des programmes pour faciliter et, en quelque sorte, encapsuler la gestion de la mémoire physique. Ainsi, ils se situent physiquement à deux adresses différentes, mais leurs mémoires virtuelles respectivent indiquent les mêmes adresses.
 
 2. Que se passe-t-il, en ordre, entre le moment où un logiciel déréférence un pointeur invalide et le moment où vous voyez une erreur de segmentation? On veut ici les étapes menant à cette erreur.
 
@@ -18,7 +18,7 @@ Exercice 2 :
 
 5. Un système d'exploitation a-t-il accès aux adresses physiques de la mémoire (plutôt qu'avoir seulement accès aux adresses virtuelles comme les processus) ? Pourquoi ?
 
-
+	Oui, il y a accès car c'est le système d'exploitation qui s'occupe de charger l'information en mémoire secondaire dans la mémoire physique principale en plus de mettre à jour les tables de pages virtuelles en fonction de ces changements.
 
 6. Nommez une situation où une politique de remplacement LRU d'une cache serait nécessairement plus efficace qu'une politique de remplacement aléatoire. Pourquoi ? 
 
@@ -30,16 +30,16 @@ Exercice 2 :
 
 8. Quels sont les avantages d'une cache Harvard par rapport à une cache unifiée ?
 
-
+	Une structure cache Harvard est divisée en une cache d'instruction et une cache de données sur une architecture à 2 bus (l'architecture Harvard) ce qui permet un accès simultané à une donnée et l'instruction du programme, augmentant ainsi la performance du processeur.
 
 9. Sur un ordinateur contenant un processeur Intel Pentium III et 16 Gio de RAM installée, le système d'exploitation indique qu'il n'y a que 4 Gio de mémoire utilisable. Pourquoi ?
 
-	Parce qu'un Pentium III n'est qu'un processeur 32 bit, il ne possède donc pas assez de bits pour traiter une plus grande allocation d'addresses mémoires principales. le nombre maximales d'adresses possibles avec 32 bits est 2^32 octets (4Gio).
+	Parce qu'un Pentium III n'est qu'un processeur 32 bit, il ne possède donc pas assez de bits pour traiter une plus grande allocation d'addresses mémoires. le nombre maximal d'adresses possibles avec 32 bits est 2^32 octets (4Gio).
 
 10. Pourquoi le code suivant produit-il une erreur d'exécution ? 
 #include <stdlib.h>
 int main(void) {
-	asm("pushf\norl $ 0x40000, (%esp) \ npopf \ n ");
+	asm("pushf\norl $ 0x40000, (%esp)\npopf\n");
 	* ((int*) (((char*) malloc(5)) + 1)) = 23;
 	return 0;
 }
